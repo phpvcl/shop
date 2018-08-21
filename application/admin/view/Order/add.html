@@ -1,0 +1,57 @@
+{include file='head'}
+    <body>
+        <div class="wrap-container">
+            <form class="layui-form" action="/admin/Order/doAdd/" method="post" style="width: 96%;padding-top: 20px;">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">订单号：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Order[order_no]" value="" placeholder="请输入订单号" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                <label class="layui-form-label">用户名：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="Order[users_id]" value="" placeholder="请输入用户ID" class="layui-input">
+                </div></div><div class="layui-form-item">
+                    <label class="layui-form-label">发货地址：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Order[addr]" value="" placeholder="请输入发货地址" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">收件电话：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Order[tel]" value="" placeholder="请输入收件电话" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">备注：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Order[message]" value="" placeholder="请输入备注" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">地址：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Order[delivery]" value="" placeholder="请输入地址" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">支付方式：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Order[pay_type]" value="" placeholder="请输入支付方式" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">价格：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Order[price]" value="" placeholder="请输入价格" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    <button class="layui-btn layui-btn-small layui-btn-primary go-btn" data-url="/admin/Order/index">返回</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,49 @@
+{include file='head'}   
+<body>
+    <div class="wrap-container">
+        <form class="layui-form" action="/admin/AuthItems/doAdd/" method="post" style="width: 96%;padding-top: 20px;">
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">权限名称：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="AuthItems[name]" value="" lay-verify="required" placeholder="请输入权限名称" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">权限路径：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="AuthItems[path]" value="" lay-verify="required" placeholder="请输入路径" class="layui-input">
+                </div>
+                <label class="layui-form-label">参数：</label>
+                 <div class="layui-input-inline">
+                    <input type="text" name="AuthItems[param]" value="" placeholder="请输入参数" class="layui-input">
+                </div>               
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">关联路径：</label>
+                <div class="layui-input-block">
+                    <textarea class="layui-textarea" name="AuthItems[relation_path]" placeholder="支持多个路径，请用豆号分开"></textarea>
+                </div>
+            </div>    
+            <div class="layui-form-item">
+                <label class="layui-form-label">所属菜单：</label>
+                <div class="layui-input-block">
+                    <select name="AuthItems[menu_id]">
+                        <option value="">请选择菜单</option>
+                        {foreach name='AuthMenu' item='menu'}
+                        <option value="{$menu.id}">{$menu.name}</option>
+                        {/foreach}
+                    </select>
+                </div>
+            </div>    
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <input type="hidden" name="AuthItems[pid]" value="{$pid}">
+                    <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">立即提交</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

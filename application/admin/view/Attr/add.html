@@ -1,0 +1,46 @@
+{include file='head'}
+    <body>
+        <div class="wrap-container">
+            <form class="layui-form" action="/admin/Attr/doAdd/" method="post" style="width: 96%;padding-top: 20px;">
+                <div class="layui-form-item">
+                <label class="layui-form-label">属性组：</label>
+                <div class="layui-input-block">
+                    <select name="Attr[attr_group_id]" lay-verify="required">
+                        <option value="">请选择</option>
+                        {foreach name="AttrGroup" item="relation"}
+                        <option value="{$relation.id}" >{$relation.group_name}</option>
+                        {/foreach}
+                    </select>
+                </div></div><div class="layui-form-item">
+                <label class="layui-form-label">属性类型：</label>
+                <div class="layui-input-block">
+                    {foreach name="value_typeItems" item="value_type"}
+                    <input type="radio" {if $key eq 1}checked{/if} value="{$key}" name="Attr[value_type]" title="{$value_type}">
+                    {/foreach}
+                </div></div><div class="layui-form-item">
+                    <label class="layui-form-label">属性名：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Attr[attr_name]" value=""  lay-verify="required" placeholder="请输入属性名" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">属性值：</label>
+                <div class="layui-input-block">
+                    <textarea class="layui-textarea" name="Attr[attr_value]"  lay-verify="required"></textarea>
+                </div></div><div class="layui-form-item">
+                    <label class="layui-form-label">排序：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Attr[order]" value="1" placeholder="请输入排序" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">立即提交</button>
+                            
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+
+</html>

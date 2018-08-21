@@ -1,0 +1,40 @@
+{include file='head'}   
+    <body>
+        <div class="wrap-container">
+            <form class="layui-form" action="/admin/AdminMessage/doAdd/" method="post" style="width: 96%;padding-top: 20px;">
+                <div class="layui-form-item">
+                <label class="layui-form-label">接收人：</label>
+                <div class="layui-input-block">
+                    <select name="AdminMessage[receiver_id]" lay-verify="required">
+                        <option value="">请选择</option>
+                        {foreach name="AuthAdmin" item="relation"}
+                        <option value="{$relation.id}" >{$relation.username}</option>
+                        {/foreach}
+                    </select>
+                </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">标题：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="AdminMessage[title]" value="" lay-verify="required" placeholder="请输入标题" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">留言：</label>
+                <div class="layui-input-block">
+                    <textarea class="layui-textarea" name="AdminMessage[message]" lay-verify="content"></textarea>
+                </div>
+                </div>
+ 
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">立即提交</button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+
+</html>

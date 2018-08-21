@@ -1,0 +1,78 @@
+{include file='head'}  
+
+<body>
+    <div class="wrap-container clearfix">
+        <div class="column-content-detail">
+            <form class="layui-form" action="/admin/Statistics/visitor" method="get" >
+                <div class="email-tool-btn clearfix">
+                    <div style="float:left">
+                        <div class="layui-form-item">
+                            <div class="layui-inline">
+                                <label class="layui-form-label">开始日期</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="startDate" value="{$Think.get.startDate}" id="date" lay-verify="required|date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="layui-inline">
+                                <label class="layui-form-label">结束日期</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="endDate" value="{$Think.get.endDate}" id="date1" lay-verify="required|date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>                           
+                            <div class="layui-inline">
+                                <button class="layui-btn layui-btn-normal search-btn" lay-submit >搜索</button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+    <!--图表-->
+    <div class="chart-panel panel panel-default">
+        <div class="panel-body" id="chart" style="height: 376px;">
+        </div>
+    </div>    
+    <script src="/static/lib/echarts/echarts.common.min.js"></script>
+    <script>
+        layui.use(['form', 'laydate'], function () {
+            var laydate = layui.laydate;
+            var showDays = {$showDays|raw};
+            var data = {$data|raw};
+            //日期
+            laydate.render({
+                elem: '#date'
+            });
+            laydate.render({
+                elem: '#date1'
+            });
+            var myChart = echarts.init(document.getElementById('chart'));
+
+            // 指定图表的配置项和数据
+            var option = {
+                title: {
+                    text: '访客数走势图'
+                },
+                xAxis: {
+                    data: showDays
+                },
+                yAxis: {},
+                series: [{
+                        name: '访客数',
+                        type: 'line',
+                        smooth: true,
+                        data: data
+                    }]
+            };
+
+            myChart.setOption(option);
+
+        })
+    </script>
+</body>
+
+</html>

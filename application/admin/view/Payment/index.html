@@ -1,0 +1,49 @@
+{include file='head'}
+
+    <body>
+        <div class="wrap-container clearfix"  id="table-list">
+            <div class="column-content-detail">
+                    <div class="email-tool-btn clearfix">
+                        <div  style="float:left">
+                            <button class="layui-btn layui-btn-small layui-btn-primary add-btn" data-height='500'  data-url="/admin/Payment/add">
+                                <i class="layui-icon">&#xe654;</i>
+                            </button>                            
+                        </div>
+                        <div style="clear:both;"></div>
+                    </div>                
+             
+                <div class="layui-form">
+                    <table class="layui-table">
+                        <colgroup>
+                            <col><col><col><col width='300'><col><col>
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>id</th><th>支付方式名称</th><th>费用</th><th>描述</th><th>是否启用</th><th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {foreach name='list' item='myList' empty="<tr><td colspan=5>暂无数据<td></tr>"}
+                            <tr>
+                                <td>{$myList.id}</td><td>{$myList.pay_name}</td><td>{$myList.fee}</td><td>{$myList.desc}</td><td>{$is_onlineItems[$myList.is_online]}</td> <td><a href="javascript:" data-url="/admin/Payment/edit/id/{$myList.id }" data-height="500" class="edit-btn">
+                              <i class="layui-icon">&#xe642;</i>&nbsp;
+                         </a>
+                         <a href="javascript:" data-url="/admin/Payment/del/id/{$myList.id}" class="del-btn">
+                                 &nbsp;<i class="layui-icon">&#xe640;</i>
+                         </a></td>
+                            </tr>
+                            {/foreach}
+                        </tbody>
+                    </table>
+
+                    <div style='text-align: right;'>
+                        {$page|raw}
+                    </div>
+
+                </div>
+              
+            </div>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,37 @@
+{include file='head'}   
+    <body>
+        <div class="wrap-container">
+            <form class="layui-form" action="/admin/FriendLink/doAdd/" method="post" style="width: 96%;padding-top: 20px;">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">名称：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="FriendLink[name]" lay-verify="required" value="" placeholder="请输入名称" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">地址：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="FriendLink[url]" value=""  lay-verify="url" placeholder="请输入地址" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">logo：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="FriendLink[logo]" value="" placeholder="请输入logo" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">排序：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="FriendLink[order]" value="0" placeholder="请输入排序" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">立即提交</button>
+                        
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+
+</html>

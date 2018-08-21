@@ -1,0 +1,32 @@
+{include file='head'}  
+<body>
+
+    <div class="layui-tab-item layui-show">      
+        <form action="/admin/AuthAdmin/doEditNoteBook" class="layui-form layui-form-pane" method="post" style="width: 96%;margin: 10px;">
+
+            <div class="layui-form-item layui-form-text">
+
+                <div class="layui-input-block">
+                    <textarea name="AuthAdmin[notebook]" class="layui-textarea">{$records.notebook}</textarea>
+                </div>
+            </div>
+
+            <div class="layui-form-item" style="text-align: right">
+                <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">立即提交</button>
+            </div>
+        </form>                    
+    </div>
+
+    <script>
+        //Demo
+        layui.use(['form', 'element'], function () {
+            var element = layui.element;
+            var layid = location.hash.replace(/^#tab=/, '');
+            element.tabChange('tab', layid);
+
+
+
+        });
+    </script>       
+</body>
+</html>

@@ -1,0 +1,32 @@
+{include file='head'}   
+    <body>
+        <div class="wrap-container">
+            <form class="layui-form" action="/admin/AuthMenu/doEdit/id/{$records.id}" method="post" style="width: 96%;padding-top: 20px;">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">菜单分类：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="AuthMenu[name]" value="{$records.name}" placeholder="请输入菜单分类" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">图标：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="AuthMenu[icon]" value="{$records.icon}" placeholder="请输入图标" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">排序：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="AuthMenu[order]" value="{$records.order}" placeholder="请输入排序" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">立即提交</button>
+                        
+                    </div>
+                </div>
+            </form>
+        </div>       
+    </body>
+
+</html>

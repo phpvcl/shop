@@ -1,0 +1,90 @@
+{include file='head'}
+    <body>
+        <div class="wrap-container">
+            <form class="layui-form" action="/admin/Users/doAdd/" method="post" style="width: 96%;padding-top: 20px;">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">用户名：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Users[username]" lay-verify='required' value="" placeholder="请输入用户名" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">密码：</label>
+                    <div class="layui-input-block">
+                        <input type="password" name="Users[password]" lay-verify='required' value="" placeholder="请输入密码" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">重复密码：</label>
+                    <div class="layui-input-block">
+                        <input type="password" name="Users[repassword]" lay-verify='required' value="" placeholder="请再输一次密码" class="layui-input">
+                    </div>
+                </div>                
+                <div class="layui-form-item">
+                    <label class="layui-form-label">昵称：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Users[nickname]" value="" placeholder="请输入昵称" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                <label class="layui-form-label">性别：</label>
+                <div class="layui-input-block">
+                    {foreach name="sexItems" item="sex"}
+                    <input type="radio"  value="{$key}" name="Users[sex]" title="{$sex}">
+                    {/foreach}
+                </div></div><div class="layui-form-item">
+                    <label class="layui-form-label">电话：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Users[tel]" value="" placeholder="请输入电话" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">邮箱：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Users[email]" value="" placeholder="请输入邮箱" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">积分：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Users[integral]" value="" placeholder="请输入积分" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">地址：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Users[addr]" value="" placeholder="请输入地址" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">邮编：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Users[zip]" value="" placeholder="请输入邮编" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">生日：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Users[birdthday]" value="" placeholder="请输入生日" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">QQ：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Users[qq]" value="" placeholder="请输入QQ" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">MSN：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Users[msn]" value="" placeholder="请输入MSN" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">立即提交</button>
+                        <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    <button class="layui-btn layui-btn-small layui-btn-primary go-btn" data-url="/admin/Users/index">返回</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </body>
+
+</html>

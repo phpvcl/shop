@@ -1,0 +1,76 @@
+{include file='head'} 
+    <body>
+        <div class="layui-container" id="table-list">
+            <br>
+
+            <div class="layui-btn-group">
+                <button class="layui-btn layui-btn-primary add-btn" data-url="/admin/GoodsCat/add/pid/0" data-height="300">
+                    <i class="layui-icon">&#xe608;</i> 添加
+                </button>
+                <button class="layui-btn layui-btn-primary" id="btn-expand"><i class="layui-icon">&#xe61a;</i> 展开</button>
+                <button class="layui-btn layui-btn-primary" id="btn-fold"><i class="layui-icon">&#xe619;</i> 折叠</button>
+                <button class="layui-btn layui-btn-primary" id="btn-refresh"><i class="layui-icon">&#xe666;</i> 刷新</button>
+            </div>
+            <table id="table1" class="layui-table" lay-filter="table1"></table>
+        </div>
+        <div id="tool" style="display: none">
+            <a href="javascript:" data-url="/admin/GoodsCat/add/pid/{{d.id}}" data-height="300" class="add-btn">
+                <i class="layui-icon">&#xe654;</i>&nbsp;
+            </a>
+
+            <a href="javascript:" data-url="/admin/GoodsCat/edit/id/{{d.id}}" data-height="300" class="edit-btn">
+                <i class="layui-icon">&#xe642;</i>&nbsp;
+            </a>
+            <a href="javascript:" data-url="/admin/GoodsCat/del/id/{{d.id}}" class="del-btn">
+                &nbsp;<i class="layui-icon">&#xe640;</i>
+            </a>
+        </div>
+ <script>
+            layui.extend({
+                treetable: 'treetable'
+            }).use(['table', 'element', 'treetable'], function () {
+                var $ = layui.jquery;
+                var table = layui.table;
+                var element = layui.element;
+                var treetable = layui.treetable;
+
+                // 渲染表格
+                var renderTable = function () {
+                    layer.load(2);
+                    treetable.render({
+                        treeColIndex: 0,
+                        treeSpid: 0,
+                        treeIdName: 'id',
+                        treePidName: 'pid',
+                        elem: '#table1',
+                        url: '/admin/GoodsCat/getTree',
+                        page: false,
+                        cols: [[
+                                {field: 'name', title: '商品分类'},
+                                {templet: '#tool', title: '操作', align: 'center'}
+                            ]],
+                        done: function () {
+                            layer.closeAll('loading');
+                        }
+                    });
+                };
+
+                renderTable();
+
+                $('#btn-expand').click(function () {
+                    treetable.expandAll('#table1');
+                });
+
+                $('#btn-fold').click(function () {
+                    treetable.foldAll('#table1');
+                });
+
+                $('#btn-refresh').click(function () {
+                    renderTable();
+                });
+
+            });
+        </script>          
+    </body>
+
+</html>

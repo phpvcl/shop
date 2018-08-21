@@ -1,0 +1,37 @@
+{include file='head'}
+
+    <body>
+        <div class="wrap-container clearfix"  id="table-list">
+            <div class="column-content-detail">
+            
+             
+                <div class="layui-form">
+                    <table class="layui-table">
+                        <colgroup>
+                            <col><col><col><col>
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th>数据文件</th><th>文件大小</th><th>时间</th><th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {foreach name='list' item='myList' empty="<tr><td colspan=3>暂无数据<td></tr>"}
+                            <tr>
+                                <td>{$myList.file}</td><td>{$myList.size}KB</td><td>{$myList.time}</td> <td><a href="javascript:layer.msg('还原功能已取消了，请手动还原')" >
+                              <i class="layui-icon">&#xe642;</i>&nbsp;
+                         </a>
+                         <a href="javascript:" data-url="/admin/Database/del/file/{$myList.file}" class="del-btn">
+                                 &nbsp;<i class="layui-icon">&#xe640;</i>
+                         </a></td>
+                            </tr>
+                            {/foreach}
+                        </tbody>
+                    </table>
+                </div>
+              
+            </div>
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,42 @@
+{include file='head'}  
+<body>
+    <div class="wrap-container">
+        <form class="layui-form" action="/admin/AuthAdmin/doAdd/" method="post" style="width: 96%;padding-top: 20px;">
+            <div class="layui-form-item">
+                <label class="layui-form-label">用户名：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="AuthAdmin[username]" lay-verify="required" value="" placeholder="请输入用户名" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">密码：</label>
+                <div class="layui-input-block">
+                    <input type="password" name="AuthAdmin[password]" lay-verify="required" value="" placeholder="请输入密码" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">确认密码：</label>
+                <div class="layui-input-block">
+                    <input type="password" name="AuthAdmin[repassword]" lay-verify="required" value="" placeholder="再输入一次新密码" class="layui-input">
+                </div>
+            </div>                
+            <div class="layui-form-item">
+                <label class="layui-form-label">所属角色：</label>
+                <div class="layui-input-block">
+                    {foreach name="AuthRole" item="relation"}
+                    <input type="checkbox" name="role_id[]" value="{$relation.id}" title="{$relation.name}" >
+                    {/foreach}
+
+                </div></div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">立即提交</button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

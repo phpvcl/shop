@@ -1,0 +1,27 @@
+{include file='head'}
+    <body>
+        <div class="wrap-container">
+            <form class="layui-form" action="/admin/ArticleCat/doEdit/id/{$records.cid}" method="post" style="width: 96%;padding-top: 20px;">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">分类名：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="ArticleCat[type_name]" value="{$records.type_name}"  lay-verify="required" placeholder="请输入分类名" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">备注：</label>
+                    <div class="layui-input-block">
+                         <textarea name="ArticleCat[desc]" class="layui-textarea" placeholder="请输入备注" >{$records.desc}</textarea>
+                      
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">立即提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>      
+    </body>
+
+</html>

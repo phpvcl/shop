@@ -1,0 +1,53 @@
+{include file='head'}
+    <body>
+        <div class="wrap-container">
+            <form class="layui-form" action="/admin/Payment/doEdit/id/{$records.id}" method="post" style="width: 96%;padding-top: 20px;">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">支付名称：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Payment[pay_name]" lay-verify='required' value="{$records.pay_name}" placeholder="请输入支付方式名称" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">费用：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Payment[fee]" lay-verify='number' value="{$records.fee}" placeholder="请输入费用" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">描述：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Payment[desc]" value="{$records.desc}" placeholder="请输入描述" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">校验码：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Payment[checkcode]" lay-verify='required' value="{$records.checkcode}" placeholder="请输入安全校验码" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">商号：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Payment[username]" lay-verify='required' value="{$records.username}" placeholder="请输入商号" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">密钥：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Payment[password]" lay-verify='required' value="{$records.password}" placeholder="请输入密钥" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                <label class="layui-form-label">是否启用：</label>
+                <div class="layui-input-block">
+                    {foreach name="is_onlineItems" item="is_online"}
+                    <input type="radio" {if $records.is_online eq $key}checked{/if} value="{$key}" name="Payment[is_online]" title="{$is_online}">
+                    {/foreach}
+                </div></div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">立即提交</button>
+                       
+                    </div>
+                </div>
+            </form>
+        </div>      
+    </body>
+
+</html>

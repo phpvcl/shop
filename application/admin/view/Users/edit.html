@@ -1,0 +1,123 @@
+{include file='head'}
+<body>
+    <div class="layui-tab page-content-wrap" lay-filter="tab">
+        <ul class="layui-tab-title">
+            <li class="layui-this" lay-id='doEdit'>修改资料</li>
+            <li lay-id='modifyPassword'>修改密码</li>
+        </ul>
+        <div class="layui-tab-content">
+            <!--修改资料-->
+            <div class="layui-tab-item layui-show">   
+                <form class="layui-form" action="/admin/Users/doEdit/id/{$records.id}" method="post" style="width: 96%;padding-top: 20px;">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">用户名：</label>
+                        <div class="layui-input-block">
+                            <div class="layui-form-mid layui-word-aux">{$records.username}</div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">昵称：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="Users[nickname]" value="{$records.nickname}" placeholder="请输入昵称" class="layui-input">
+                        </div>
+                    </div><div class="layui-form-item">
+                        <label class="layui-form-label">性别：</label>
+                        <div class="layui-input-block">
+                            {foreach name="sexItems" item="sex"}
+                            <input type="radio" {if $records.sex eq $key}checked{/if} value="{$key}" name="Users[sex]" title="{$sex}">
+                                   {/foreach}
+                        </div></div><div class="layui-form-item">
+                        <label class="layui-form-label">电话：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="Users[tel]" value="{$records.tel}" placeholder="请输入电话" class="layui-input">
+                        </div>
+                    </div><div class="layui-form-item">
+                        <label class="layui-form-label">邮箱：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="Users[email]" value="{$records.email}" placeholder="请输入邮箱" class="layui-input">
+                        </div>
+                    </div><div class="layui-form-item">
+                        <label class="layui-form-label">积分：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="Users[integral]" value="{$records.integral}" placeholder="请输入积分" class="layui-input">
+                        </div>
+                    </div><div class="layui-form-item">
+                        <label class="layui-form-label">审核状态：</label>
+                        <div class="layui-input-block">
+                            {foreach name="checkedItems" item="checked"}
+                            <input type="radio" {if $records.checked eq $key}checked{/if} value="{$key}" name="Users[checked]" title="{$checked}">
+                                   {/foreach}
+                        </div></div><div class="layui-form-item">
+                        <label class="layui-form-label">地址：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="Users[addr]" value="{$records.addr}" placeholder="请输入地址" class="layui-input">
+                        </div>
+                    </div><div class="layui-form-item">
+                        <label class="layui-form-label">邮编：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="Users[zip]" value="{$records.zip}" placeholder="请输入邮编" class="layui-input">
+                        </div>
+                    </div><div class="layui-form-item">
+                        <label class="layui-form-label">生日：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="Users[birdthday]" value="{$records.birdthday}" placeholder="请输入生日" class="layui-input">
+                        </div>
+                    </div><div class="layui-form-item">
+                        <label class="layui-form-label">QQ：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="Users[qq]" value="{$records.qq}" placeholder="请输入QQ" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">MSN：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="Users[msn]" value="{$records.msn}" placeholder="请输入MSN" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">立即提交</button>
+                            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                            <button class="layui-btn layui-btn-small layui-btn-primary go-btn" data-url="/admin/Users/index">返回</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--修改密码-->
+            <div class="layui-tab-item">      
+                <form class="layui-form" action="/admin/Users/modifyPassword/id/{$records.id}" method="post" style="width: 96%;padding-top: 20px;">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">新密码：</label>
+                        <div class="layui-input-block">
+                            <input type="password" name="Users[password]" value="" lay-verify="required" placeholder="请输入新密码" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">确认密码：</label>
+                        <div class="layui-input-block">
+                            <input type="password" name="Users[repassword]" lay-verify="required" value="" placeholder="再输入一次新密码" class="layui-input">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">立即提交</button>
+
+                        </div>
+                    </div>
+                </form>                    
+            </div>            
+        </div>
+    </div>  
+         <script>
+            //Demo
+            layui.use(['form', 'element'], function () {
+                var element = layui.element;
+                var layid = location.hash.replace(/^#tab=/, '');
+                element.tabChange('tab', layid); 
+            });
+        </script>       
+</body>
+
+</html>

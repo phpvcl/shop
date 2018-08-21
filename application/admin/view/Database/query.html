@@ -1,0 +1,21 @@
+{include file='head'}
+    <body>
+        <div class="wrap-container">
+            <form class="layui-form" action="/admin/Database/doQuery" method="post" style="width: 96%;padding-top: 20px;">
+                <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">SQL语句：</label>
+                <div class="layui-input-block">
+                    <textarea class="layui-textarea" name="SQL" lay-verify="required"></textarea>
+                </div></div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">立即执行</button>
+
+                    </div>
+                </div>
+            </form>
+        </div>      
+    </body>
+
+</html>

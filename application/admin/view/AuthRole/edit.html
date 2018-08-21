@@ -1,0 +1,57 @@
+{include file='head'}  
+<style>
+    .auth-icon{vertical-align: middle;color:#777;}
+</style>
+<body>
+    <div class="wrap-container">
+        <form class="layui-form" action="/admin/AuthRole/doEdit/id/{$records.id}" method="post" style="width: 96%;padding-top: 20px;">
+            <div class="layui-form-item">
+                <label class="layui-form-label">角色名称：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="AuthRole[name]" value="{$records.name}" placeholder="请输入角色名称" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">排序：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="AuthRole[order]" value="{$records.order}" placeholder="请输入排序" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">描述信息：</label>
+                <div class="layui-input-block">
+                    <textarea class="layui-textarea" name="AuthRole[desc]" lay-verify="content">{$records.desc}</textarea>
+                </div></div><div class="layui-form-item">
+                <label class="layui-form-label">选择权限：</label>
+                <div class="layui-input-block">
+                    <div id="items"></div>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">立即提交</button>
+                    <button class="layui-btn layui-btn-small layui-btn-primary go-btn" data-url="/admin/AuthRole/index">返回</button>
+                </div>
+            </div>
+        </form>
+    </div>    
+    <script>
+        layui.extend({
+            authtree: 'authtree'
+        }).use(['jquery', 'authtree'], function () {
+            var $ = layui.jquery;
+            var authtree = layui.authtree;
+            authtree.render({
+                element: '#items',
+                url: '/admin/AuthRole/getTree/id/{$records.id}',
+                inputname: 'items[]',
+                openall: false
+               
+            });
+        });
+    </script>      
+</body>
+
+</html>

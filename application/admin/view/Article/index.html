@@ -1,0 +1,89 @@
+{include file='head'}
+
+    <body>
+        <div class="wrap-container clearfix">
+            <div class="column-content-detail">
+                <form class="layui-form" action="/admin/Article/index" method="get" >
+                    <div class="email-tool-btn clearfix">
+                        <div  style="float:left">
+                            <button class="layui-btn layui-btn-small layui-btn-primary  batchdel-btn">
+                                <i class="layui-icon">&#xe640;</i>
+                            </button>
+                            <button class="layui-btn layui-btn-small layui-btn-primary go-btn" data-url="/admin/Article/add">
+                                <i class="layui-icon">&#xe654;</i>
+                            </button>
+                        </div>
+                        <div style="float:right">
+                            <div class="layui-form-item">
+                                <div class="layui-inline">
+                                    <input type="text" name="title" lay-verify="required" placeholder="搜索文章标题" value="{$title}"  class="layui-input">
+                                </div>
+                                <div class="layui-inline">
+                                    <button class="layui-btn layui-btn-normal search-btn">搜索</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+                <form action='/admin/Article/batchDel/' method='post' id="batchdel-btn" class="layui-form"  />
+                <div class="layui-form" id="table-list"  >
+                    <table class="layui-table" >
+                        <colgroup>
+                            <col width="50">
+
+                            <col width="100">
+                            <col>
+                            <col width="150">
+                            <col width="150">
+                            <col width="80">
+                            <col width="150">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" name="all" lay-skin="primary" lay-filter="allChoose"></th>
+                                <th>ID</th>
+                                <th>名称</th>
+                                <th>文章分类</th>
+                                <th>创建时间</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {foreach name='list' item='myList' empty="<tr><td colspan=6>暂无数据<td></tr>"}
+                            <tr>
+                                <td><input type="checkbox" value='{$myList.id}' name="id[]" lay-skin="primary"></td>
+
+                                <td>{$myList.id}</td>
+                                <td>{$myList.title}</td>
+                                <td>{$myList.articleCat.type_name}</td>
+                                <td>{$myList.create_time|date='Y-m-d'}</td>
+                                <td>正常</td>
+                                <td>
+                                    <div class="layui-inline">
+                                        <a href='/admin/Article/edit/id/{$myList.id}'>
+                                            <i class="layui-icon">&#xe642;</i>&nbsp;
+                                        </a>
+                                        <a href="javascript:" data-url='/admin/Article/del/id/{$myList.id}' class='del-btn'>
+                                            &nbsp;<i class="layui-icon">&#xe640;</i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                            {/foreach}
+                        </tbody>
+                    </table>
+
+                    <div style='text-align: right;'>
+                        {$page|raw}
+                    </div>
+
+                </div>
+                </form>
+            </div>
+        </div>
+    </body>
+
+</html>

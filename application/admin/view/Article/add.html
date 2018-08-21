@@ -1,0 +1,113 @@
+{include file='head'}
+    <body>
+    
+        <form action='/admin/Article/doAdd' method='post'  class="layui-form column-content-detail">
+            <div class="layui-form-item">
+                <label class="layui-form-label">文章标题：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="article[title]"  lay-verify="required" placeholder="请输入文章标题" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">分类栏目：</label>
+                <div class="layui-input-block">
+                    <select name="article[article_cat_id]" lay-verify="required">
+                        <option value="">请选择分类栏目</option>
+                        {foreach name='ArticleCat' item='cat'}
+                        <option value="{$cat.cid}">{$cat.type_name}</option>
+                        {/foreach}
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">标签：</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" checked="" value="1" name="article[is_top]" title="置顶">
+                    <input type="checkbox" value="1" name="article[is_hot]" title="热门">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">图像上传：</label>
+                <div class="layui-input-block">
+                    <button type="button" name='myfile' class="layui-btn" id="upload">
+                        <i class="layui-icon">&#xe67c;</i>上传图片
+                    </button>
+                    <input type="hidden" name="article[pic]" value="/static/nopic.jpg" id="pic">
+                    <div id="ImgPreview"></div>
+                </div>
+            </div>            
+            <div class="layui-form-item">
+                <label class="layui-form-label">关键字：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="article[keywords]" placeholder="请输入关键字" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">描述：</label>
+                <div class="layui-input-block">
+                    <textarea placeholder="请输入内容" name='article[desc]' class="layui-textarea"></textarea>
+                </div>
+            </div>
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">文章内容：</label>
+                <div class="layui-input-block">
+                    <textarea class="layui-textarea layui-hide" name="article[content]" lay-verify="content" id="editor"></textarea>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">文章来源：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="article[source]"   placeholder="请输入文章来源" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-form-item" style="padding-left: 10px;">
+                <div class="layui-input-block">
+                    <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                       <button class="layui-btn layui-btn-small layui-btn-primary go-btn" data-url="/admin/Article/index">返回</button>
+                </div>
+            </div>
+        </form>   
+   <script>
+        layui.use(['layedit', 'upload'], function () {
+            var upload = layui.upload;
+            //执行实例
+            var uploadObj = upload.render({
+                elem: '#upload',
+                accept: 'file',
+                field: 'file',
+                url: '/admin/Api/upload',
+                done: function (res) {
+                    $('#pic').val(res.data.src)
+                    $('#ImgPreview').html('<img src="' + res.data.src + '">');
+                    layer.alert(res.msg, {title: '最终的提交信息'})
+                },
+                error: function (res) {
+                    return;
+                }
+            });
+            
+            var layedit = layui.layedit;
+            layedit.set({
+                uploadImage: {
+                    url: '/admin/Api/editor',
+                }
+            });
+            var editor = layedit.build('editor');
+            var form =layui.form;
+            form.verify({
+                content: function (value) {
+                    var text = layedit.getContent(editor);
+                    if (text.length < 4) {
+                        return '内容请输入至少4个字符';
+                    }
+                }
+            });            
+        });
+
+    </script>   
+    </body>
+</html>

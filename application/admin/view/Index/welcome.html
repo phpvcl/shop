@@ -1,0 +1,218 @@
+{include file='head'}
+
+<body> 
+    <div class="wrap-container welcome-container">
+        <div class="row">
+            <div class="welcome-left-container col-lg-9">
+                <div class="data-show">
+                    <ul class="clearfix tab-son-show-item">
+                        <li class="col-sm-12 col-md-4 col-xs-12">
+                            <a href="javascript:;" data-url="/admin/Goods/index" data-id="21" data-text="商品列表" class="clearfix">
+                                <div class="icon-bg bg-org f-l">
+                                    <span class="iconfont">&#xe604;</span>
+                                </div>
+                                <div class="right-text-con">
+                                    <p class="name">商品数</p>
+                                    <p><span class="color-org">{$count.goods}</span>数据<span class="iconfont">&#xe628;</span></p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="col-sm-12 col-md-4 col-xs-12">
+                            <a href="javascript:;" data-url="/admin/Users/index" data-id="51" data-text="会员管理"  class="clearfix">
+                                <div class="icon-bg bg-blue f-l">
+                                    <span class="iconfont">&#xe606;</span>
+                                </div>
+                                <div class="right-text-con">
+                                    <p class="name">会员数</p>
+                                    <p><span class="color-blue">{$count.users}</span>数据<span class="iconfont">&#xe628;</span></p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="col-sm-12 col-md-4 col-xs-12">
+                            <a href="javascript:;" data-url="/admin/Article/index" data-id="13" data-text="文章管理"  class="clearfix">
+                                <div class="icon-bg bg-green f-l">
+                                    <span class="iconfont">&#xe602;</span>
+                                </div>
+                                <div class="right-text-con">
+                                    <p class="name">文章数</p>
+                                    <p><span class="color-green">{$count.article}</span>数据<span class="iconfont">&#xe60f;</span></p>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="col-sm-12 col-md-4 col-xs-12">
+                            <a href="javascript:;"  data-url="/admin/Order/index" data-id="49" data-text="订单列表"  class="clearfix">
+                                <div class="icon-bg bg-green f-l">
+                                    <span class="iconfont">&#xe603;</span>
+                                </div>
+                                <div class="right-text-con">
+                                    <p class="name">订单数</p>
+                                    <p><span class="color-green">{$count.order}</span>数据<span class="iconfont">&#xe60f;</span></p>
+                                </div>
+                            </a>
+                        </li>    
+                        <li class="col-sm-12 col-md-4 col-xs-12">
+                            <a href="javascript:;" data-url="/admin/Order/index" data-id="49" data-text="订单列表" class="clearfix">
+                                <div class="icon-bg bg-org f-l">
+                                    <span class="iconfont">&#xe603;</span>
+                                </div>
+                                <div class="right-text-con">
+                                    <p class="name">营业额</p>
+                                    <p><span class="color-org">{$count.income}</span>数据<span class="iconfont">&#xe60f;</span></p>
+                                </div>
+                            </a>
+                        </li>   
+                        <li class="col-sm-12 col-md-4 col-xs-12">
+                            <a href="javascript:;" data-url="/admin/FriendLink/index" data-id="88" data-text="友情链接" class="clearfix">
+                                <div class="icon-bg bg-green f-l">
+                                    <span class="iconfont">&#xe60c;</span>
+                                </div>
+                                <div class="right-text-con">
+                                    <p class="name">友情链接</p>
+                                    <p><span class="color-green">{$count.friendlink}</span>数据<span class="iconfont">&#xe60f;</span></p>
+                                </div>
+                            </a>
+                        </li>                                
+                    </ul>
+                </div>
+
+
+
+                <!--图表-->
+                <div class="chart-panel panel panel-default">
+                    <div class="panel-body" id="chart" style="height: 376px;">
+                    </div>
+                </div>
+                <!--服务器信息-->
+                <div class="server-panel panel panel-default">
+                    <div class="panel-header">服务器信息</div>
+                    <div class="panel-body clearfix">
+                        <div class="col-md-2">
+                            <p class="title">服务器环境</p>
+                            <span class="info">{$Think.server.server_software}</span>
+                        </div>
+                        <div class="col-md-2">
+                            <p class="title">服务器IP地址</p>
+                            <span class="info">{$Think.server.server_addr}</span>
+                        </div>
+                        <div class="col-md-2">
+                            <p class="title">服务器域名</p>
+                            <span class="info">{$Think.server.server_name}</span>
+                        </div>
+                        <div class="col-md-2">
+                            <p class="title"> PHP版本</p>
+                            <span class="info">{$Think.const.PHP_VERSION}</span>
+                        </div>
+                        <div class="col-md-2">
+                            <p class="title">根目录</p>
+                            <span class="info">{$Think.server.document_root}</span>
+                        </div>
+                        <div class="col-md-2">
+                            <p class="title">服务器当前时间</p>
+                            <span class="info">{$Think.server.request_time|date='Y-m-d H:i:s'}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="/static/js/main.js" type="text/javascript" charset="utf-8"></script>   
+    <script src="/static/lib/echarts/echarts.common.min.js"></script>
+    <script type="text/javascript">
+        layui.use(['layer', 'jquery'], function () {
+            var layer = layui.layer;
+            var $ = layui.jquery;
+                    var users = {$users | raw};
+                    var turnover = {$turnover | raw};
+                    var showDays = {$showDays | raw};
+
+            var myChart = echarts.init(document.getElementById('chart'));
+            myChart.setOption({
+                title: {
+                    text: "数据统计",
+                    textStyle: {
+                        color: "rgb(85, 85, 85)",
+                        fontSize: 18,
+                        fontStyle: "normal",
+                        fontWeight: "normal"
+                    }
+                },
+                tooltip: {
+                    trigger: "axis"
+               
+                },
+                legend: {
+                    data: ["会员数", "营业额(万)"],
+                    selectedMode: false,
+                },
+                toolbox: {
+                    show: true,
+                    feature: {
+                        dataView: {
+                            show: false,
+                            readOnly: true
+                        },
+                        magicType: {
+                            show: false,
+                            type: ["line"]
+                        },
+                        mark: {
+                            show: false
+                        }
+                    }
+                },
+                color:['#FFCC33','#86d2ee'],
+                calculable: false,
+                xAxis: [
+                    {
+                        type: "category",
+                        boundaryGap: false,
+                        data: showDays
+                    }
+                ],
+                yAxis: [
+                    {
+                        type: "value"
+                    }
+                ],
+                grid: {
+                    x2: 30,
+                    x: 50
+                },
+                series: [
+                    {
+                        name: "会员数",
+                        type: "line",
+                        smooth: true,
+                        itemStyle: {
+                            normal: {
+                                areaStyle: {
+                                    type: "default"
+                                }
+                            }
+                        },
+                        data: users
+                    },
+                    {
+                        name: "营业额(万)",
+                        type: "line",
+                        smooth: true,
+                        itemStyle: {
+                            normal: {
+                                areaStyle: {
+                                    type: "default"
+                                }
+                            }
+                        },
+                        data: turnover
+                    }
+                ]
+            });
+
+            $(window).resize(function () {
+                myChart.resize();
+            })
+        });
+    </script>
+</body>
+</html>

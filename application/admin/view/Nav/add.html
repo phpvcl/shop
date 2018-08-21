@@ -1,0 +1,42 @@
+{include file='head'}
+    <body>
+        <div class="wrap-container">
+            <form class="layui-form" action="/admin/Nav/doAdd/" method="post" style="width: 96%;padding-top: 20px;">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">排序：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Nav[order]" value="" placeholder="请输入排序" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">导航名称：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Nav[nav_name]" value="" lay-verify="required" placeholder="请输入导航名称" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">导航地址：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Nav[nav_url]" value="" lay-verify="required" placeholder="请输入导航地址" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                <label class="layui-form-label">新窗口：</label>
+                <div class="layui-input-block">
+                    {foreach name="is_blankItems" item="is_blank"}
+                    <input type="radio"  value="{$key}" name="Nav[is_blank]" title="{$is_blank}">
+                    {/foreach}
+                </div></div><div class="layui-form-item">
+                    <label class="layui-form-label">标记：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Nav[tags]" value="" placeholder="请输入标记" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">立即提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+
+</html>

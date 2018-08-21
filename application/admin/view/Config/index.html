@@ -1,0 +1,171 @@
+{include file='head'}
+
+<body>
+    <div class="layui-tab page-content-wrap" lay-filter="tab">
+        <ul class="layui-tab-title">
+            <li class="layui-this" lay-id='config'>站点配置</li>
+            <li lay-id='emailConfig'>邮箱配置</li>
+            <li lay-id='rules'>积分规则</li>
+        </ul>
+        <div class="layui-tab-content">
+            <!--站点配置-->
+            <div class="layui-tab-item layui-show">
+                <form class="layui-form" action="/admin/Config/setConfig" method="post" style="width: 90%;padding-top: 20px;">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">网站名称：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="config[web_name]" lay-verify="required"  class="layui-input" value="{$config.web_name}">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">网站域名：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="config[domain]" lay-verify="required" class="layui-input" value="{$config.domain}">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">公司邮箱：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="config[email]" placeholder="请输入联系邮箱"  class="layui-input" value="{$config.email}">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">客服电话：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="config[tel]" placeholder="请输入电话"  class="layui-input" value="{$config.tel}">
+                        </div>
+                    </div>   
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">订单前缀：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="config[order_prex]"  placeholder="订单前缀" class="layui-input" value="{$config.order_prex}">
+                        </div>
+                    </div> 
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">商品评论：</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="config[can_comment]" value="1" title="开启" {if $config.can_comment eq 1 }checked{/if}>
+                                   <input type="radio" name="config[can_comment]" value="0" title="关闭" {if $config.can_comment eq 0 }checked{/if}>
+                        </div>
+                    </div>
+
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">备案信息：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="config[icp]" lay-verify="required" placeholder="请输入备案信息"  class="layui-input" value="{$config.icp}">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">版权信息：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="config[copyright]"  placeholder="请输入版权信息"  class="layui-input" value="{$config.copyright}">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="siteInfo">立即提交</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!--邮箱配置-->
+            <div class="layui-tab-item">
+                <form class="layui-form" action="/admin/Config/setEmailConfig" method="post"  style="width: 90%;padding-top: 20px;">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">邮箱模式：</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="config[smtp]" value="1" title="SMTP函数发送" checked="">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">服务器：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="config[smtp_server]" placeholder="请输入邮件服务器"  class="layui-input" value="{$config.smtp_server}">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">端口：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="config[smtp_port]" placeholder="请输入邮件发送端口"  class="layui-input" value="{$config.smtp_port}">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">发件人：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="config[smtp_sender]" placeholder="请输入发件人地址"  class="layui-input" value="{$config.smtp_sender}">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">用户名：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="config[smtp_user]" placeholder="请输入用户名"  class="layui-input" value="{$config.smtp_user}">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">密码：</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="config[smtp_pwd]" placeholder="请输入密码"  class="layui-input" value="{$config.smtp_pwd}">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn layui-btn-normal" lay-submit lay-filter="emailInfo">立即提交</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!--积分规则-->
+            <div class="layui-tab-item">
+                <form class="layui-form" action="/admin/Config/setRules" method="post"  style="width: 90%;padding-top: 20px;">
+
+                    <div class="layui-form-item layui-form-text">
+                        <label class="layui-form-label">文章内容：</label>
+                        <div class="layui-input-block">
+                            <textarea class="layui-textarea layui-hide" name="config[rules]" lay-verify="content" id="editor">{$config.rules}</textarea>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-input-block">
+                            <button class="layui-btn layui-btn-normal" lay-submit>立即提交</button>
+                        </div>
+                    </div>
+                </form>
+            </div>                
+
+        </div>
+    </div>
+
+    <script>
+        //Demo
+        layui.use(['form', 'element', 'layedit', 'upload'], function () {
+            var form = layui.form;
+            var element = layui.element;
+            var layid = location.hash.replace(/^#tab=/, '');
+            element.tabChange('tab', layid);
+
+            var layedit = layui.layedit;
+            layedit.set({
+                uploadImage: {
+                    url: '/admin/Api/editor',
+                }
+            });
+            var editor = layedit.build('editor');
+            var form = layui.form;
+            form.verify({
+                content: function (value) {
+                    var text = layedit.getContent(editor);
+                    if (text.length < 4) {
+                        return '内容请输入至少4个字符';
+                    }
+                }
+            });
+
+        });
+    </script>
+</body>
+
+</html>

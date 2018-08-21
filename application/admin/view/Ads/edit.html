@@ -1,0 +1,37 @@
+{include file='head'}
+    <body>
+        <div class="wrap-container">
+            <form class="layui-form" action="/admin/Ads/doEdit/id/{$records.id}" method="post" style="width: 96%;padding-top: 20px;">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">标题：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Ads[title]" lay-verify="required" value="{$records.title}" placeholder="请输入标题" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">图片地址：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Ads[pic]" value="{$records.pic}" placeholder="请输入图片地址" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">广告地址：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Ads[url]" value="{$records.url}" lay-verify="required" placeholder="请输入广告地址" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">标记：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Ads[tags]" value="{$records.tags}" placeholder="请输入标记" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">立即提交</button>
+                      
+                    </div>
+                </div>
+            </form>
+        </div>       
+    </body>
+
+</html>

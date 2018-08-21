@@ -1,0 +1,25 @@
+{include file='head'}
+    <body>
+        <div class="wrap-container">
+            <form class="layui-form" action="/admin/AttrGroup/doEdit/id/{$records.id}" method="post" style="width: 96%;padding-top: 20px;">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">分组名：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="AttrGroup[group_name]" value="{$records.group_name}" lay-verify="required" placeholder="请输入分组名" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">备注：</label>
+                <div class="layui-input-block">
+                    <textarea class="layui-textarea" name="AttrGroup[remark]">{$records.remark}</textarea>
+                </div></div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">立即提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>       
+    </body>
+
+</html>

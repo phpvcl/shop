@@ -1,0 +1,203 @@
+{include file='head'}
+<body>
+    <div class="wrap-container">
+        <form class="layui-form" action="/admin/Goods/doAdd/" method="post" style="width: 96%;padding-top: 20px;">
+            <div class="layui-form-item">
+                <label class="layui-form-label">商品名称：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="Goods[goods_name]" value="" placeholder="请输入商品名称" lay-verify="required" class="layui-input">
+                </div>
+            </div><div class="layui-form-item">
+                <label class="layui-form-label">库存数量：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="Goods[goods_number]" value="1000" lay-verify="number" placeholder="请输入库存数量" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">商品分类</label>
+                <div class="layui-input-inline" id="goods_cat">
+                    <div class="layui-unselect layui-form-select downpanel">
+                        <div class="layui-select-title">
+                            <span class="layui-input layui-unselect" id="treeclass">选择分类</span>
+                            <input type="hidden" name="Goods[goods_cat_id]" value="0">
+                            <i class="layui-edge"></i>
+                        </div>
+                        <dl class="layui-anim layui-anim-upbit">
+                            <dd>
+                                <ul id="classtree"></ul>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <label class="layui-form-label">属性组：</label>
+                <div class="layui-input-inline">
+                    <select name="Goods[attr_group_id]" lay-verify="required">
+                        <option value="">请选择</option>
+                        {foreach name="AttrGroup" item="relation"}
+                        <option value="{$relation.id}" >{$relation.group_name}</option>
+                        {/foreach}                          
+                    </select>
+                </div>                    
+            </div>                
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">商城价格：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="Goods[shop_price]" value="" lay-verify="number" placeholder="请输入商城价格" class="layui-input">
+                </div>
+                <label class="layui-form-label">参考价格：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="Goods[reference_price]" value="" placeholder="请输入参考价格" class="layui-input">
+                </div>                    
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">赠送积分：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="Goods[integral]" value="0" placeholder="请输入赠送积分" class="layui-input">
+                </div>
+                <label class="layui-form-label">所需积分：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="Goods[required_integral]" value="0" placeholder="请输入所需积分" class="layui-input">
+                </div>                    
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">是否上架：</label>
+                <div class="layui-input-inline">
+                    
+                    <input type="checkbox" checked  value="1" name="Goods[is_on_sale]"  lay-skin="switch" lay-text="ON|OFF">
+             
+                </div>
+
+                <label class="layui-form-label">积分商城：</label>
+                <div class="layui-input-inline">
+               
+                    <input type="checkbox"  value="1" name="Goods[is_integral]" lay-skin="switch" lay-text="ON|OFF" >
+                          
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">上传：</label>
+                <div class="layui-input-block">
+                    <button type="button" name="myfile" class="layui-btn" id="multiUpload">
+                        <i class="layui-icon">&#xe67c;</i>上传图片
+                    </button>
+                    <div class="layui-upload">
+                        <blockquote class="layui-elem-quote layui-quote-nm" style="margin-top: 10px;">
+                            预览图：
+                            <div class="layui-upload-list" id="ImgPreview"></div>
+                        </blockquote>
+                    </div>  
+                </div></div> 
+
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">商品特点：</label>
+                <div class="layui-input-block">
+                    <textarea class="layui-textarea" name="Goods[feature]"></textarea>
+                </div></div><div class="layui-form-item">
+                <label class="layui-form-label">关键字：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="Goods[keywords]" value="" placeholder="请输入关键字" class="layui-input">
+                </div>
+            </div><div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">商品描述：</label>
+                <div class="layui-input-block">
+                    <textarea class="layui-textarea" name="Goods[goods_desc]" ></textarea>
+                </div></div><div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">商品详情：</label>
+                <div class="layui-input-block">
+                    <textarea class="layui-textarea layui-hide" name="Goods[content]" lay-verify="content" id="editor"></textarea>
+                </div></div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">立即提交</button>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    <button class="layui-btn layui-btn-small layui-btn-primary go-btn" data-url="/admin/Goods/index">返回</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript">
+        layui.use(['jquery', 'element', 'tree', 'form', 'layedit', 'upload'], function () {
+            var $ = layui.jquery, tree = layui.tree;
+            tree({
+                elem: "#classtree",
+                nodes: {$GoodsCatTree | raw},
+                click: function (node) {
+                    var $select = $($(this)[0].elem).parents(".layui-form-select");
+                    $select.removeClass("layui-form-selected").find(".layui-select-title span").html(node.name).end().find("input:hidden[name='Goods[goods_cat_id]']").val(node.id);
+                }
+            });
+
+            $(".downpanel").on("click", ".layui-select-title", function (e) {
+                $(".layui-form-select").not($(this).parents(".layui-form-select")).removeClass("layui-form-selected");
+                $(this).parents(".downpanel").toggleClass("layui-form-selected");
+                layui.stope(e);
+            }).on("click", "dl i", function (e) {
+                layui.stope(e);
+            });
+            $(document).on("click", function (e) {
+                $("#goods_cat.layui-form-select").removeClass("layui-form-selected");
+            });
+            var upload = layui.upload;
+            //执行实例
+            var uploadObj = upload.render({
+                elem: '#multiUpload',
+                accept: 'file',
+                field: 'file',
+                url: '/admin/Api/multiUpload',
+                done: function (res) {
+                    if (res.code === 0)
+                    {
+                        $('#pic').val(res.data.src)
+                        var imgList = ' <a href="javascript:;" class="photo"><input type="hidden" name="goods_img[]" value="' +
+                                res.data.src + '"><img src="' +
+                                res.data.thumb_src + '" layer-src="' + res.data.src + '"><span class="close layui-icon">&#x1006;</span></a>';
+                        $('#ImgPreview').append(imgList);
+                    } else {
+                        layer.alert(res.msg, {title: '最终的提交信息'})
+                    }
+
+
+                },
+                error: function (res) {
+                    return;
+                }
+            });
+
+            var layedit = layui.layedit;
+            layedit.set({
+                uploadImage: {
+                    url: '/admin/Api/editor',
+                }
+            });
+            var editor = layedit.build('editor');
+            var form = layui.form;
+            form.verify({
+                content: function (value) {
+                    var text = layedit.getContent(editor);
+                    if (text.length < 4) {
+                        return '内容请输入至少4个字符';
+                    }
+                }
+            });
+            $('#ImgPreview').on('click', '.close', function () {
+                var id = $(this).attr('data-id');
+                $(this).parent().remove();
+                if (id > 0)
+                {
+                    $('#ImgPreview').append('<input type="hidden" name="goods_img_del[]" value="' + id + '">');
+                }else{
+                    var pic = $(this).prev().attr('layer-src');
+                    var thumb = $(this).prev().attr('src');
+                    $('#ImgPreview').append('<input type="hidden" name="new_but_del[]" value="' + pic + '">');
+                    $('#ImgPreview').append('<input type="hidden" name="new_but_del[]" value="' + thumb + '">');
+                }
+
+            })
+        });
+    </script>
+
+</body>
+
+</html>

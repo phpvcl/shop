@@ -1,0 +1,65 @@
+{include file='head'}  
+
+<body>
+    <div class="wrap-container clearfix"  id="table-list">
+        <div class="column-content-detail">
+            <div class="email-tool-btn clearfix">
+                <div  style="float:left">
+                    <button class="layui-btn layui-btn-small layui-btn-primary add-btn" data-height='350'  data-url="/admin/AuthAdmin/add">
+                        <i class="layui-icon">&#xe654;</i>
+                    </button>                            
+                </div>
+                <div style="clear:both;"></div>
+            </div>                
+
+            <div class="layui-form">
+                <table class="layui-table">
+                    <colgroup>
+                        <col><col><col><col><col>
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>id</th><th>用户名</th><th>所属角色</th><th>最后登陆时间</th><th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {foreach name='list' item='myList' empty="<tr><td colspan=4>暂无数据<td></tr>"}
+                        <tr>
+                            <td>{$myList.id}</td>
+                            <td>{$myList.username}</td>
+                            <td>
+                                {if $myList.is_super_admin}
+                                超级管理员
+                                {else}
+                                    {foreach name="myList.authRole" item="roles"}
+                                    {$roles.name}&nbsp;
+                                    {/foreach}
+                                {/if}
+                            </td>
+                            <td>{$myList.last_login_time|date="Y-m-d H:i"}</td> 
+                            <td>
+                                {if !$myList.is_super_admin}
+                                <a href="javascript:" data-url="/admin/AuthAdmin/edit/id/{$myList.id }" data-height="350" class="edit-btn">
+                                    <i class="layui-icon">&#xe642;</i>&nbsp;
+                                </a>
+                                <a href="javascript:" data-url="/admin/AuthAdmin/del/id/{$myList.id}" class="del-btn">
+                                    &nbsp;<i class="layui-icon">&#xe640;</i>
+                                </a>
+                                {/if}
+                            </td>
+                        </tr>
+                        {/foreach}
+                    </tbody>
+                </table>
+
+                <div style='text-align: right;'>
+                    {$page|raw}
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>

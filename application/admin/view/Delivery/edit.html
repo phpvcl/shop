@@ -1,0 +1,36 @@
+{include file='head'}
+    <body>
+        <div class="wrap-container">
+            <form class="layui-form" action="/admin/Delivery/doEdit/id/{$records.id}" method="post" style="width: 96%;padding-top: 20px;">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">排序：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Delivery[order]" value="{$records.order}" placeholder="请输入排序" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">配送名称：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Delivery[delivery_name]" value="{$records.delivery_name}" lay-verify="required" placeholder="请输入配送方式名称" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">首件运费：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Delivery[first_price]" value="{$records.first_price}" lay-verify="number" placeholder="请输入首件运费" class="layui-input">
+                    </div>
+                </div><div class="layui-form-item">
+                    <label class="layui-form-label">加件运费：</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="Delivery[other_price]" value="{$records.other_price}" lay-verify="number" placeholder="请输入加件运费" class="layui-input">
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <div class="layui-input-block">
+                        <button class="layui-btn layui-btn-normal" lay-submit lay-filter="formDemo">立即提交</button>
+                    </div>
+                </div>
+            </form>
+        </div>       
+    </body>
+
+</html>

@@ -1,0 +1,32 @@
+{include file='head'}   
+<body>
+    <div class="wrap-container">
+        <div class="layui-form-item">
+            <label class="layui-form-label">发送人：</label>
+            <div class="layui-input-block">
+                <div class="layui-form-mid">{$records.authAdminSender.username}</div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">接收人：</label>
+            <div class="layui-input-block">
+                <div class="layui-form-mid">{$records.authAdmin.username}</div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">标题：</label>
+            <div class="layui-input-block">
+                <div class="layui-form-mid">{$records.title}</div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">留言：</label>
+            <div class="layui-input-block">
+                <div class="layui-form-mid">{$records.message}</div>
+            </div>
+        </div>
+
+    </div>       
+</body>
+
+</html>
