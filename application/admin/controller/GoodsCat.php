@@ -45,7 +45,7 @@ class GoodsCat extends Purview
      */
     public function del()
     {
-        $id = input('id/d');
+        $id = $this->request->param('id/d');
 
         if ($id > 0)
         {
@@ -66,7 +66,7 @@ class GoodsCat extends Purview
      */
     public function edit()
     {
-        $id = input('id/d');
+        $id = $this->request->param('id/d');
 
         if ($id > 0)
         {
@@ -90,7 +90,7 @@ class GoodsCat extends Purview
      */
     public function doEdit()
     {
-        $id = input('id/d');
+        $id = $this->request->param('id/d');
         if ($id > 0)
         {
             $data = $this->request->post('GoodsCat');

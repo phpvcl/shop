@@ -28,8 +28,8 @@ class Goods extends Purview
     {
 
         $keywords = $this->request->get('keywords');
-        $onSale = input('onSale/d');
-        $isIntegral = input('isIntegral/d');
+        $onSale = $this->request->param('onSale/d');
+        $isIntegral = $this->request->param('isIntegral/d');
         $model = new myModel();
         // $model = $model->withGoodsCat();
         $query = [];
@@ -90,7 +90,7 @@ class Goods extends Purview
      */
     public function del()
     {
-        $id = input('id/d');
+        $id = $this->request->param('id/d');
         if ($this->togetherDelete($id))
         {
             return $this->success('操作成功', '/admin/Goods/index');
@@ -152,7 +152,7 @@ class Goods extends Purview
      */
     public function edit()
     {
-        $id = input('id/d');
+        $id = $this->request->param('id/d');
 
         if ($id > 0)
         {
@@ -182,7 +182,7 @@ class Goods extends Purview
      */
     public function doEdit()
     {
-        $id = input('id/d');
+        $id = $this->request->param('id/d');
         if ($id > 0)
         {
             $data = $this->request->post('Goods');

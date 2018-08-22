@@ -28,7 +28,7 @@ class Users extends Purview
         // 查询状态为1的用户数据 并且每页显示10条数据
 
         $keywords = $this->request->get('keywords');
-        $checked = input('checked/d');
+        $checked = $this->request->param('checked/d');
 
         $query = [];
         $model = new myModel();
@@ -83,7 +83,7 @@ class Users extends Purview
      */
     public function del()
     {
-        $id = input('id/d');
+        $id = $this->request->param('id/d');
 
         if ($id > 0)
         {
@@ -103,7 +103,7 @@ class Users extends Purview
      */
     public function edit()
     {
-        $id = input('id/d');
+        $id = $this->request->param('id/d');
 
         if ($id > 0)
         {
@@ -129,7 +129,7 @@ class Users extends Purview
      */
     public function doEdit()
     {
-        $id = input('id/d');
+        $id = $this->request->param('id/d');
         if ($id > 0)
         {
             $data = $this->request->post('Users');
@@ -157,7 +157,7 @@ class Users extends Purview
      */
     public function modifyPassword()
     {
-        $id = input('id/d');
+        $id = $this->request->param('id/d');
         if ($id > 0)
         {
             $data = $this->request->post('Users');

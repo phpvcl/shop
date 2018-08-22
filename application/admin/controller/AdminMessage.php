@@ -42,7 +42,7 @@ class AdminMessage extends Purview
      */
     public function del()
     {
-        $id = input('id/d');
+        $id = $this->request->param('id/d');
 
         if ($id > 0)
         {
@@ -62,7 +62,7 @@ class AdminMessage extends Purview
      */
     public function read()
     {
-        $id = input('id/d');
+        $id = $this->request->param('id/d');
 
         if ($id > 0)
         {
