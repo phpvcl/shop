@@ -191,7 +191,8 @@ class Goods extends Purview
             $newUploadButDel = $this->request->post('new_but_del');
 
             $model = new myModel();
-            $myModel = $model->get($id);
+            $model->startTrans();
+            $myModel = $model->lock(true)->find($id);
             if ($myModel)
             {
                 if ($myModel->save($data))
@@ -231,6 +232,7 @@ class Goods extends Purview
                             }
                         }
                     }
+                    $model->commit();
                     //处理新上传但是又删除的列表
                     if (isset($newUploadButDel[0]))
                     {
