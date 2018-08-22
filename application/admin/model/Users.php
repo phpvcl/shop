@@ -17,14 +17,15 @@ class Users extends ValidateModel
     //验证规则
     public $_rules = [
         'username|用户名' => 'required|unique',
-        'password|密码' => 'required|compare:repassword|md5'
+        'password|密码' => 'required|compare:repassword|md5',
+        'integral|积分' =>'>=:0'
     ];
     //预设场景
     public $_scene = [
         'global' => [],
         'doEdit' => [],
-        'modifyPassword' => ['password'],
-        'doAdd' => ['username', 'password']
+        'modifyPassword' => ['password', 'integral'],
+        'doAdd' => ['username', 'password', 'integral']
     ];
 
 }
