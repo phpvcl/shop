@@ -27,5 +27,8 @@ class Users extends ValidateModel
         'modifyPassword' => ['password', 'integral'],
         'doAdd' => ['username', 'password', 'integral']
     ];
-
+    public function address()
+    {
+        return $this->hasMany('Address', 'user_id');
+    }
 }

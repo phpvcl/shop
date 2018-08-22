@@ -1,3 +1,18 @@
+DROP TABLE IF EXISTS `shop_address`;
+CREATE TABLE `shop_address` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL COMMENT '用户',
+  `consignee` varchar(255) NOT NULL COMMENT '收件人',
+  `mobile` varchar(255) DEFAULT NULL COMMENT '手机',
+  `tel` varchar(255) DEFAULT '' COMMENT '电话',
+  `email` varchar(255) DEFAULT '' COMMENT '邮箱',
+  `address` varchar(255) NOT NULL COMMENT '地址',
+  `best_time` varchar(255) DEFAULT NULL COMMENT '最佳收货时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+insert into `shop_address`(`id`,`user_id`,`consignee`,`mobile`,`tel`,`email`,`address`,`best_time`) values('1','13','test','11111111','','sdfsd@sdfs.com','广东省广州市天河区','晚上9点前');
+insert into `shop_address`(`id`,`user_id`,`consignee`,`mobile`,`tel`,`email`,`address`,`best_time`) values('2','13','orange','2222222','','sdfsdfsd@qq.com','北京市','白天');
+
 DROP TABLE IF EXISTS `shop_admin_message`;
 CREATE TABLE `shop_admin_message` (
   `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
@@ -10,7 +25,7 @@ CREATE TABLE `shop_admin_message` (
   PRIMARY KEY (`id`),
   KEY `sender_id` (`sender_id`,`receiver_id`),
   KEY `receiver_id` (`receiver_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 insert into `shop_admin_message`(`id`,`sender_id`,`receiver_id`,`title`,`message`,`is_readed`,`send_time`) values('3','1','2','sdfsdfs','sdfdagsdfgsdf枯相辅相成要要林要要要顶戴夺夺在地一一一一寺地地地寺地地','1','1534727698');
 insert into `shop_admin_message`(`id`,`sender_id`,`receiver_id`,`title`,`message`,`is_readed`,`send_time`) values('4','1','4','在吗','注意客户的电话','0','1534725964');
 
@@ -34,7 +49,7 @@ CREATE TABLE `shop_area` (
   `pid` int(11) NOT NULL DEFAULT '0',
   `name` varchar(50) NOT NULL DEFAULT '' COMMENT '地区名称',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 insert into `shop_area`(`id`,`pid`,`name`) values('1','0','中国');
 insert into `shop_area`(`id`,`pid`,`name`) values('2','1','广东省');
 insert into `shop_area`(`id`,`pid`,`name`) values('3','2','广州');
@@ -57,7 +72,7 @@ CREATE TABLE `shop_article` (
   `update_time` int(11) NOT NULL DEFAULT '0',
   `create_time` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=131126 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=1501 DEFAULT CHARSET=utf8;
 insert into `shop_article`(`id`,`title`,`content`,`desc`,`source`,`keywords`,`article_cat_id`,`pic`,`is_hot`,`is_top`,`update_time`,`create_time`) values('63','精油的用法','  <img src=\"http://shop.tianziya.com/app/upload/editor/201306/09_1370708983747.jpg\" alt=\"\" border=\"0\">sdfsdfsdfdf<br>','','','','1','','1','0','0','0');
 insert into `shop_article`(`id`,`title`,`content`,`desc`,`source`,`keywords`,`article_cat_id`,`pic`,`is_hot`,`is_top`,`update_time`,`create_time`) values('64','星座精油传奇','<img src=\"http://shop.tianziya.com/app/upload/editor/201306/09_13707090214043.jpg\" alt=\"\" border=\"0\" /><br />','','','','1','','1','0','0','0');
 insert into `shop_article`(`id`,`title`,`content`,`desc`,`source`,`keywords`,`article_cat_id`,`pic`,`is_hot`,`is_top`,`update_time`,`create_time`) values('65','美丽肌肤的标准',' <img src=\"http://shop.tianziya.com/app/upload/editor/201306/09_13707090467669.jpg\" alt=\"\" border=\"0\"><br>','','','','1','','1','0','0','0');
@@ -1664,7 +1679,7 @@ CREATE TABLE `shop_article_cat` (
   `type_name` varchar(200) NOT NULL DEFAULT '' COMMENT '分类名',
   `desc` text COMMENT '备注',
   PRIMARY KEY (`cid`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 insert into `shop_article_cat`(`cid`,`type_name`,`desc`) values('1','品牌物语','test');
 insert into `shop_article_cat`(`cid`,`type_name`,`desc`) values('2','单肤test','sfsdfsds');
 insert into `shop_article_cat`(`cid`,`type_name`,`desc`) values('3','sdfsdsfd要sssd','');
@@ -1692,7 +1707,7 @@ CREATE TABLE `shop_attr_group` (
   `group_name` varchar(60) NOT NULL DEFAULT '' COMMENT '分组名',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 insert into `shop_attr_group`(`id`,`group_name`,`remark`) values('3','news','');
 insert into `shop_attr_group`(`id`,`group_name`,`remark`) values('4','test','test');
 
@@ -1706,8 +1721,8 @@ CREATE TABLE `shop_auth_admin` (
   `is_super_admin` tinyint(1) DEFAULT '0' COMMENT '是否超级管理员',
   `last_login_time` int(11) DEFAULT '0' COMMENT '最后登陆时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
-insert into `shop_auth_admin`(`id`,`username`,`password`,`notebook`,`status`,`is_super_admin`,`last_login_time`) values('1','admin','e10adc3949ba59abbe56e057f20f883e','客户xxx下午说要下单','1','1','1534871842');
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+insert into `shop_auth_admin`(`id`,`username`,`password`,`notebook`,`status`,`is_super_admin`,`last_login_time`) values('1','admin','e10adc3949ba59abbe56e057f20f883e','客户xxx下午说要下单','1','1','1534880574');
 insert into `shop_auth_admin`(`id`,`username`,`password`,`notebook`,`status`,`is_super_admin`,`last_login_time`) values('2','myadmin1','e10adc3949ba59abbe56e057f20f883e','','1','0','1534870922');
 
 DROP TABLE IF EXISTS `shop_auth_admin_role`;
@@ -1716,7 +1731,6 @@ CREATE TABLE `shop_auth_admin_role` (
   `role_id` int(11) DEFAULT '0',
   UNIQUE KEY `admin_role` (`admin_id`,`role_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-insert into `shop_auth_admin_role`(`admin_id`,`role_id`) values('1','1');
 insert into `shop_auth_admin_role`(`admin_id`,`role_id`) values('2','1');
 insert into `shop_auth_admin_role`(`admin_id`,`role_id`) values('2','2');
 
@@ -1732,7 +1746,7 @@ CREATE TABLE `shop_auth_items` (
   `desc` varchar(200) NOT NULL DEFAULT '' COMMENT '权限描述',
   `status` int(1) NOT NULL DEFAULT '1' COMMENT '状态|0-禁用 1-开启',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=102 DEFAULT CHARSET=utf8 COMMENT='权限表';
+) ENGINE=InnoDB AUTO_INCREMENT=98 DEFAULT CHARSET=utf8 COMMENT='权限表';
 insert into `shop_auth_items`(`id`,`pid`,`name`,`path`,`relation_path`,`param`,`menu_id`,`desc`,`status`) values('1','0','后台首页','/admin/Index/index','/admin/Index/welcome,
 /admin/AuthAdmin/adminInfo,
 /admin/AuthAdmin/doEditAdminInfo,
@@ -1841,7 +1855,7 @@ CREATE TABLE `shop_auth_menu` (
   `icon` varchar(255) DEFAULT NULL COMMENT '图标',
   `order` int(11) DEFAULT NULL COMMENT '排序',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 insert into `shop_auth_menu`(`id`,`name`,`icon`,`order`) values('1','基本设置','&#xe60b;','1');
 insert into `shop_auth_menu`(`id`,`name`,`icon`,`order`) values('2','文章管理','&#xe608;','2');
 insert into `shop_auth_menu`(`id`,`name`,`icon`,`order`) values('3','商品管理','&#xe604;','3');
@@ -1858,7 +1872,7 @@ CREATE TABLE `shop_auth_role` (
   `order` int(11) NOT NULL DEFAULT '0' COMMENT '排序',
   `desc` varchar(200) NOT NULL DEFAULT '' COMMENT '描述信息',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COMMENT='角色';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='角色';
 insert into `shop_auth_role`(`id`,`name`,`order`,`desc`) values('1','普通管理员','1','');
 
 DROP TABLE IF EXISTS `shop_auth_role_items`;
@@ -1956,7 +1970,7 @@ CREATE TABLE `shop_config` (
   `rules` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-insert into `shop_config`(`id`,`web_name`,`domain`,`email`,`tel`,`order_prex`,`can_comment`,`icp`,`copyright`,`bank`,`api_user`,`api_pass`,`smtp`,`smtp_sender`,`smtp_user`,`smtp_pwd`,`smtp_server`,`smtp_port`,`rules`) values('1','skdfsdsdsfsf','http://www.test.com','5303588521@111.com','123321332','sdfsdfssdfsdssdss','1','黔ICP备sdfss','遵义依来德防水保温公司 copyRight © 2016','<p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">开户名称：广州御德商务咨询有限公司</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">开 户 行：中国工商银行广州市环城支行</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">账&nbsp;&nbsp;&nbsp; 号：3602015209200693463</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">接受货币：人民币 （到账当天出票）</span></span></p><p>&nbsp;</p><hr /><p>&nbsp;</p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">个人汇款账号：（注意：只有以下账户是公司认可的个人对私账户）</span></span></p><p>&nbsp;</p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">中国建设银行&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">户名：覃兵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br /></span><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">开户行：建设银行广州市帝景大厦支行&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">账号：6227 0033 2753 0034 328&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></p><p>&nbsp;</p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">中国农业银行</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">户名：覃兵</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">开户行：农业银行广州环市支行</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">账号：6228 4800 8220 8372 118</span></span></p><p>&nbsp;</p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">招商银行</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">户名：覃兵</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">开户行：招商银行广州世贸大厦支行</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">账号：6225 8812 0535 8947</span></span></p><p>&nbsp;</p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">中国工商银行&nbsp; </span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">户名：覃兵</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">开户行：中国工商银行广州友谊支行</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">卡号：6222 0236 0204 2570770</span></span></p><p>&nbsp;</p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">交通银行</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">户名：覃兵</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">开户行：交通银行广州市同福支行</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">账号：6222 6007 1000 7559 323</span></span></p><p>&nbsp;</p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">中国银行</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">户名：覃兵</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">开户行：中国银行广州昌岗路分理处</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">账号：4776405 0188 089191 4 </span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">卡号：6013 8219 0003 8031 246</span></span></p>','879905060103109788','99billKeyForTest','1','1300hong@163.com','1300hong@163.com','111111ssd','smtp.163.com','250','操作 获得积分数 说明 <div class=\"spctrl\"></div>
+insert into `shop_config`(`id`,`web_name`,`domain`,`email`,`tel`,`order_prex`,`can_comment`,`icp`,`copyright`,`bank`,`api_user`,`api_pass`,`smtp`,`smtp_sender`,`smtp_user`,`smtp_pwd`,`smtp_server`,`smtp_port`,`rules`) values('1','skdfsdsdsfsf','http://www.test.com','5303588521@111.com','123321332','sdfsdfssdfsdssdss','1','黔ICP备sdfss','遵义依来德防水保温公司 copyRight © 2016','<p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">开户名称：广州御德商务咨询有限公司</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">开 户 行：中国工商银行广州市环城支行</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">账&nbsp;&nbsp;&nbsp; 号：3602015209200693463</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">接受货币：人民币 （到账当天出票）</span></span></p><p>&nbsp;</p><hr /><p>&nbsp;</p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">个人汇款账号：（注意：只有以下账户是公司认可的个人对私账户）</span></span></p><p>&nbsp;</p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">中国建设银行&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">户名：覃兵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br /></span><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">开户行：建设银行广州市帝景大厦支行&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">账号：6227 0033 2753 0034 328&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></span></p><p>&nbsp;</p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">中国农业银行</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">户名：覃兵</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">开户行：农业银行广州环市支行</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">账号：6228 4800 8220 8372 118</span></span></p><p>&nbsp;</p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">招商银行</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">户名：覃兵</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">开户行：招商银行广州世贸大厦支行</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">账号：6225 8812 0535 8947</span></span></p><p>&nbsp;</p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">中国工商银行&nbsp; </span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">户名：覃兵</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">开户行：中国工商银行广州友谊支行</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">卡号：6222 0236 0204 2570770</span></span></p><p>&nbsp;</p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">交通银行</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">户名：覃兵</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">开户行：交通银行广州市同福支行</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">账号：6222 6007 1000 7559 323</span></span></p><p>&nbsp;</p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">中国银行</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">户名：覃兵</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">开户行：中国银行广州昌岗路分理处</span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">账号：4776405 0188 089191 4 </span></span></p><p><span style=\"font-size:14px;\"><span style=\"font-size:14px;\">卡号：6013 8219 0003 8031 246</span></span></p>','879905060103109788','99billKeyForTest','1','1300hong@163.coms','1300hong@163.com','111111ssd','smtp.163.com','250','操作 获得积分数 说明 <div class=\"spctrl\"></div>
 　　日常操作： <div class=\"spctrl\"></div>
 　　新用户首次登陆 ＋20 完成帐户的激活 <div class=\"spctrl\"></div>
 　　每日登陆 ＋5 每日只在第一次登陆加分（可以分别登陆知道和百科） <div class=\"spctrl\"></div>
@@ -2050,16 +2064,16 @@ CREATE TABLE `shop_goods` (
   KEY `goods_number` (`goods_number`)
 ) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 insert into `shop_goods`(`id`,`goods_name`,`goods_number`,`goods_cat_id`,`attr_group_id`,`shop_price`,`reference_price`,`is_on_sale`,`is_integral`,`integral`,`required_integral`,`feature`,`keywords`,`goods_desc`,`content`,`add_time`) values('19','天姿雅 桃花美白滋养睡眠面膜100g 补水美白 淡斑去黄 亮色修护','100','47','3','88.00','90.00','1','0','0','0','','','','sdfsd','1370724574');
-insert into `shop_goods`(`id`,`goods_name`,`goods_number`,`goods_cat_id`,`attr_group_id`,`shop_price`,`reference_price`,`is_on_sale`,`is_integral`,`integral`,`required_integral`,`feature`,`keywords`,`goods_desc`,`content`,`add_time`) values('20','test','1000','37','3','100.00','110.00','1','1','0','0','','','','tesfsdfssfd','0');
-insert into `shop_goods`(`id`,`goods_name`,`goods_number`,`goods_cat_id`,`attr_group_id`,`shop_price`,`reference_price`,`is_on_sale`,`is_integral`,`integral`,`required_integral`,`feature`,`keywords`,`goods_desc`,`content`,`add_time`) values('21','test','1000','37','3','0.00','0.00','1','0','0','0','','','','test','0');
-insert into `shop_goods`(`id`,`goods_name`,`goods_number`,`goods_cat_id`,`attr_group_id`,`shop_price`,`reference_price`,`is_on_sale`,`is_integral`,`integral`,`required_integral`,`feature`,`keywords`,`goods_desc`,`content`,`add_time`) values('22','test','1000','37','3','0.00','0.00','1','0','0','0','','','','test','0');
-insert into `shop_goods`(`id`,`goods_name`,`goods_number`,`goods_cat_id`,`attr_group_id`,`shop_price`,`reference_price`,`is_on_sale`,`is_integral`,`integral`,`required_integral`,`feature`,`keywords`,`goods_desc`,`content`,`add_time`) values('23','test','1000','37','3','0.00','0.00','1','0','0','0','','','','test','0');
-insert into `shop_goods`(`id`,`goods_name`,`goods_number`,`goods_cat_id`,`attr_group_id`,`shop_price`,`reference_price`,`is_on_sale`,`is_integral`,`integral`,`required_integral`,`feature`,`keywords`,`goods_desc`,`content`,`add_time`) values('24','testsdfsd','1000','33','3','33.00','333.00','1','0','0','0','','','','sdfsdfsdsd','0');
-insert into `shop_goods`(`id`,`goods_name`,`goods_number`,`goods_cat_id`,`attr_group_id`,`shop_price`,`reference_price`,`is_on_sale`,`is_integral`,`integral`,`required_integral`,`feature`,`keywords`,`goods_desc`,`content`,`add_time`) values('25','testsdfsd','1000','33','3','33.00','333.00','1','0','0','0','','','','sdfsdfsdsd','0');
-insert into `shop_goods`(`id`,`goods_name`,`goods_number`,`goods_cat_id`,`attr_group_id`,`shop_price`,`reference_price`,`is_on_sale`,`is_integral`,`integral`,`required_integral`,`feature`,`keywords`,`goods_desc`,`content`,`add_time`) values('26','testsdfsd','1000','33','3','33.00','333.00','1','0','0','0','','','','sdfsdfsdsd','0');
-insert into `shop_goods`(`id`,`goods_name`,`goods_number`,`goods_cat_id`,`attr_group_id`,`shop_price`,`reference_price`,`is_on_sale`,`is_integral`,`integral`,`required_integral`,`feature`,`keywords`,`goods_desc`,`content`,`add_time`) values('29','sdfsgogogogogogo','1000','37','3','1000.00','1000.00','1','0','0','0','sdfsdf','','','sdfsdafsdfsasdf','0');
-insert into `shop_goods`(`id`,`goods_name`,`goods_number`,`goods_cat_id`,`attr_group_id`,`shop_price`,`reference_price`,`is_on_sale`,`is_integral`,`integral`,`required_integral`,`feature`,`keywords`,`goods_desc`,`content`,`add_time`) values('30','天姿雅 桃花美白滋养睡眠面膜100g 补水美白 淡斑去黄 亮色修护','1000','35','3','88.00','110.00','1','0','0','0','','','','sdfsdfsdfssddf','0');
-insert into `shop_goods`(`id`,`goods_name`,`goods_number`,`goods_cat_id`,`attr_group_id`,`shop_price`,`reference_price`,`is_on_sale`,`is_integral`,`integral`,`required_integral`,`feature`,`keywords`,`goods_desc`,`content`,`add_time`) values('31','天姿雅 桃花美白滋养睡眠面膜100g ','1000','41','4','100.00','110.00','1','0','0','0','','','','sdfsdfsddf','0');
+insert into `shop_goods`(`id`,`goods_name`,`goods_number`,`goods_cat_id`,`attr_group_id`,`shop_price`,`reference_price`,`is_on_sale`,`is_integral`,`integral`,`required_integral`,`feature`,`keywords`,`goods_desc`,`content`,`add_time`) values('20','test','1000','37','3','100.00','110.00','1','1','0','0','','','','tesfsdfssfd','1370728574');
+insert into `shop_goods`(`id`,`goods_name`,`goods_number`,`goods_cat_id`,`attr_group_id`,`shop_price`,`reference_price`,`is_on_sale`,`is_integral`,`integral`,`required_integral`,`feature`,`keywords`,`goods_desc`,`content`,`add_time`) values('21','test','1000','37','3','0.00','0.00','1','0','0','0','','','','test','1370724574');
+insert into `shop_goods`(`id`,`goods_name`,`goods_number`,`goods_cat_id`,`attr_group_id`,`shop_price`,`reference_price`,`is_on_sale`,`is_integral`,`integral`,`required_integral`,`feature`,`keywords`,`goods_desc`,`content`,`add_time`) values('22','test','1000','37','3','0.00','0.00','1','0','0','0','','','','test','1370774574');
+insert into `shop_goods`(`id`,`goods_name`,`goods_number`,`goods_cat_id`,`attr_group_id`,`shop_price`,`reference_price`,`is_on_sale`,`is_integral`,`integral`,`required_integral`,`feature`,`keywords`,`goods_desc`,`content`,`add_time`) values('23','test','1000','37','3','0.00','0.00','1','0','0','0','','','','test','1370724574');
+insert into `shop_goods`(`id`,`goods_name`,`goods_number`,`goods_cat_id`,`attr_group_id`,`shop_price`,`reference_price`,`is_on_sale`,`is_integral`,`integral`,`required_integral`,`feature`,`keywords`,`goods_desc`,`content`,`add_time`) values('24','testsdfsd','1000','33','3','33.00','333.00','1','0','0','0','','','','sdfsdfsdsd','1370784574');
+insert into `shop_goods`(`id`,`goods_name`,`goods_number`,`goods_cat_id`,`attr_group_id`,`shop_price`,`reference_price`,`is_on_sale`,`is_integral`,`integral`,`required_integral`,`feature`,`keywords`,`goods_desc`,`content`,`add_time`) values('25','testsdfsd','1000','33','3','33.00','333.00','1','0','0','0','','','','sdfsdfsdsd','1370724574');
+insert into `shop_goods`(`id`,`goods_name`,`goods_number`,`goods_cat_id`,`attr_group_id`,`shop_price`,`reference_price`,`is_on_sale`,`is_integral`,`integral`,`required_integral`,`feature`,`keywords`,`goods_desc`,`content`,`add_time`) values('26','testsdfsd','1000','33','3','33.00','333.00','1','0','0','0','','','','sdfsdfsdsd','1370728574');
+insert into `shop_goods`(`id`,`goods_name`,`goods_number`,`goods_cat_id`,`attr_group_id`,`shop_price`,`reference_price`,`is_on_sale`,`is_integral`,`integral`,`required_integral`,`feature`,`keywords`,`goods_desc`,`content`,`add_time`) values('29','sdfsgogogogogogo','1000','37','3','1000.00','1000.00','1','0','0','0','sdfsdf','','','sdfsdafsdfsasdf','1370724574');
+insert into `shop_goods`(`id`,`goods_name`,`goods_number`,`goods_cat_id`,`attr_group_id`,`shop_price`,`reference_price`,`is_on_sale`,`is_integral`,`integral`,`required_integral`,`feature`,`keywords`,`goods_desc`,`content`,`add_time`) values('30','桃花美白滋养睡眠面膜100g 补水美白 淡斑去黄 亮色修护','1000','35','3','88.00','110.00','1','0','0','0','','','','sdfsdfsdfssddf','1370729574');
+insert into `shop_goods`(`id`,`goods_name`,`goods_number`,`goods_cat_id`,`attr_group_id`,`shop_price`,`reference_price`,`is_on_sale`,`is_integral`,`integral`,`required_integral`,`feature`,`keywords`,`goods_desc`,`content`,`add_time`) values('31','桃花美白滋养睡眠面膜100g','1000','41','4','100.00','110.00','1','0','0','0','','','','sdfsdfsddf','1370724574');
 
 DROP TABLE IF EXISTS `shop_goods_cat`;
 CREATE TABLE `shop_goods_cat` (
@@ -2097,7 +2111,7 @@ CREATE TABLE `shop_goods_images` (
   `is_default` tinyint(4) DEFAULT '0' COMMENT '默认',
   `order` int(11) DEFAULT '0' COMMENT '排序',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 insert into `shop_goods_images`(`id`,`goods_id`,`goods_pic`,`goods_thumb_pic`,`is_default`,`order`) values('7','22','/uploads/goods/201808/20180803101229_132.jpg','/uploads/goods/201808/20180803101229_132_jpg','0','0');
 insert into `shop_goods_images`(`id`,`goods_id`,`goods_pic`,`goods_thumb_pic`,`is_default`,`order`) values('8','22','/uploads/goods/201808/20180803101233_868.jpg','/uploads/goods/201808/20180803101229_132_jpg','0','0');
 insert into `shop_goods_images`(`id`,`goods_id`,`goods_pic`,`goods_thumb_pic`,`is_default`,`order`) values('9','23','/uploads/goods/201808/20180803101229_132.jpg','/uploads/goods/201808/20180803101229_132_jpg','0','0');
@@ -2117,6 +2131,8 @@ insert into `shop_goods_images`(`id`,`goods_id`,`goods_pic`,`goods_thumb_pic`,`i
 insert into `shop_goods_images`(`id`,`goods_id`,`goods_pic`,`goods_thumb_pic`,`is_default`,`order`) values('29','19','/uploads/goods/20180819/bba72486ca9c0f55748cf51f33d806fe.jpg','/uploads/goods/20180819/bba72486ca9c0f55748cf51f33d806fe_thumb.jpg','0','0');
 insert into `shop_goods_images`(`id`,`goods_id`,`goods_pic`,`goods_thumb_pic`,`is_default`,`order`) values('33','20','/uploads/goods/20180820/eb266dc55856052f7b96de6cb0e5ecae.png','/uploads/goods/20180820/eb266dc55856052f7b96de6cb0e5ecae_thumb.png','0','0');
 insert into `shop_goods_images`(`id`,`goods_id`,`goods_pic`,`goods_thumb_pic`,`is_default`,`order`) values('37','29','/uploads/goods/20180820/0520ea49e51d324be953b7b58110c741.png','/uploads/goods/20180820/0520ea49e51d324be953b7b58110c741_thumb.png','0','0');
+insert into `shop_goods_images`(`id`,`goods_id`,`goods_pic`,`goods_thumb_pic`,`is_default`,`order`) values('38','31','/uploads/goods/20180822/0c9913aa76738a051a84bd77f9493727.png','/uploads/goods/20180822/0c9913aa76738a051a84bd77f9493727_thumb.png','0','0');
+insert into `shop_goods_images`(`id`,`goods_id`,`goods_pic`,`goods_thumb_pic`,`is_default`,`order`) values('39','31','/uploads/goods/20180822/1d9a7be60dac8862ac4009135b981137.jpg','/uploads/goods/20180822/1d9a7be60dac8862ac4009135b981137_thumb.jpg','0','0');
 
 DROP TABLE IF EXISTS `shop_keywords`;
 CREATE TABLE `shop_keywords` (
@@ -2589,7 +2605,7 @@ insert into `shop_users`(`id`,`username`,`password`,`nickname`,`sex`,`tel`,`emai
 insert into `shop_users`(`id`,`username`,`password`,`nickname`,`sex`,`tel`,`email`,`consumed`,`integral`,`checked`,`addr`,`zip`,`birdthday`,`qq`,`msn`,`reg_time`) values('8','bang','c60364ea7654560b136fee807c85f102','hongadmin','1','','hongadmin','0','0','1','','','','','','0');
 insert into `shop_users`(`id`,`username`,`password`,`nickname`,`sex`,`tel`,`email`,`consumed`,`integral`,`checked`,`addr`,`zip`,`birdthday`,`qq`,`msn`,`reg_time`) values('10','pen','d423f8f1efdf274efdb290b91359ec3b','aking','1','123456','caihuajun@gmail.com','0','0','1','广州市天河区中山大道中38号加悦大厦317','0','','','','0');
 insert into `shop_users`(`id`,`username`,`password`,`nickname`,`sex`,`tel`,`email`,`consumed`,`integral`,`checked`,`addr`,`zip`,`birdthday`,`qq`,`msn`,`reg_time`) values('11','gddfgdf','e10adc3949ba59abbe56e057f20f883e','洪四方0000','2','1213212','1300hong@163.com','','0','2','121212','52400000','2010-05-06','23221','1212','0');
-insert into `shop_users`(`id`,`username`,`password`,`nickname`,`sex`,`tel`,`email`,`consumed`,`integral`,`checked`,`addr`,`zip`,`birdthday`,`qq`,`msn`,`reg_time`) values('13','ppppp','f63f4fbc9f8c85d409f2f59f2b9e12d5','','1','','','0','0','1','','','','','','0');
+insert into `shop_users`(`id`,`username`,`password`,`nickname`,`sex`,`tel`,`email`,`consumed`,`integral`,`checked`,`addr`,`zip`,`birdthday`,`qq`,`msn`,`reg_time`) values('13','ppppp','f63f4fbc9f8c85d409f2f59f2b9e12d5','','1','','','0','100','1','','','','','','0');
 
 DROP TABLE IF EXISTS `shop_vote`;
 CREATE TABLE `shop_vote` (

@@ -4,6 +4,7 @@
         <ul class="layui-tab-title">
             <li class="layui-this" lay-id='doEdit'>修改资料</li>
             <li lay-id='modifyPassword'>修改密码</li>
+            <li lay-id='address'>地址簿</li>
         </ul>
         <div class="layui-tab-content">
             <!--修改资料-->
@@ -107,17 +108,38 @@
                         </div>
                     </div>
                 </form>                    
-            </div>            
+            </div>  
+            <div class="layui-tab-item">      
+                <table class="layui-table">
+                    <thead>
+                        <tr>
+                            <th>id</th><th>收货人</th><th>手机</th><th>地址</th><th>邮箱</th><th>收货时间</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {foreach name='records.address' item='myList' empty="<tr><td colspan=5>暂无数据<td></tr>"}
+                        <tr>
+                            <td>{$myList.id}</td>
+                            <td>{$myList.consignee}</td>
+                            <td>{$myList.mobile}</td>
+                            <td>{$myList.address}</td> 
+                            <td>{$myList.email}</td>
+                            <td>{$myList.best_time}</td>
+                        </tr>
+                        {/foreach}
+                    </tbody>
+                </table>                                  
+            </div>             
         </div>
     </div>  
-         <script>
-            //Demo
-            layui.use(['form', 'element'], function () {
-                var element = layui.element;
-                var layid = location.hash.replace(/^#tab=/, '');
-                element.tabChange('tab', layid); 
-            });
-        </script>       
+    <script>
+        //Demo
+        layui.use(['form', 'element'], function () {
+            var element = layui.element;
+            var layid = location.hash.replace(/^#tab=/, '');
+            element.tabChange('tab', layid);
+        });
+    </script>       
 </body>
 
 </html>
