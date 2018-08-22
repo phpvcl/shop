@@ -134,11 +134,14 @@ class Users extends Purview
         {
             $data = $this->request->post('Users');
             $model = new myModel();
-            $myModel = $model->get($id);
+            $model->startTrans();
+            //加锁
+            $myModel = $model->lock(true)->find($id);
             if ($myModel)
             {
                 if ($myModel->save($data))
-                {
+                { 
+                    $model->commit();
                     return $this->success('操作成功', '/admin/Users/index');
                 }
                 else
