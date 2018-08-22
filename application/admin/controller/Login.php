@@ -16,7 +16,7 @@ class Login extends Controller
 {
 
     /**
-     * 列表页面
+     * 登陆页面
      * 
      * @return string
      */

@@ -1,8 +1,8 @@
 <?php
 
 namespace app\admin\controller;
-
-class demo
+use app\admin\common\Purview;
+class demo extends Purview
 {
 
     public function index()
@@ -23,9 +23,8 @@ class demo
     }
     public function test()
     {
-        $str = 'http://www.gzftx.com/result.php?id=628&did=686';
-        $param = '/^http:\/\/[\w]+(\.[\w-]+)+([\w&?=.\/]+)?$/';
-        echo preg_match($param, $str);
+        $test = $this->request->param('test/s');
+        echo $test;
     }
     
 }
