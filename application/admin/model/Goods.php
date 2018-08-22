@@ -18,16 +18,17 @@ class Goods extends ValidateModel
     public $_rules = [
         'goods_name|商品名称' => 'required',
         'goods_number|库存数量' => 'required|number',
-        'shop_price|商城价格' => 'number',
+        'shop_price|商城价格' => 'number|>:0',
         'content|商品详情' => 'required',
+        'reference_price|参考价格'=> 'number|>:0',
         'is_on_sale' => 'default:0',
         'is_integral' => 'default:0'
     ];
     //预设场景
     public $_scene = [
         'global' => [],
-        'doEdit' => ['goods_name', 'goods_number', 'shop_price', 'content', 'is_on_sale', 'is_integral'],
-        'doAdd' => ['goods_name', 'goods_number', 'shop_price', 'content']
+        'doEdit' => ['goods_name', 'goods_number', 'shop_price','reference_price', 'content', 'is_on_sale', 'is_integral'],
+        'doAdd' => ['goods_name', 'goods_number', 'shop_price','reference_price', 'content']
     ];
 
     public function attrGroup()
