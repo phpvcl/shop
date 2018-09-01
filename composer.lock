@@ -1,10 +1,9 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "hash": "42c0a04e980328fb318f32e7479238f6",
     "content-hash": "b6caa67ed6a3ca8fd7904ef1b09f9aa2",
     "packages": [
         {
@@ -38,20 +37,20 @@
                 }
             ],
             "description": "此扩展是thinkPHP5的nestendsets的扩展。能够方便的在项目中来管理有层级关系的数据结构。该扩展在算法上部分参考了Willfred di Vampo的nestedsets，实现了数据的插入，移动，删除，遍历等功能。",
-            "time": "2018-05-17 02:27:20"
+            "time": "2018-05-17T02:27:20+00:00"
         },
         {
             "name": "gmars/tp5-rbac",
-            "version": "v1.3",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/gmars/tp5-rbac.git",
-                "reference": "8c08cd5a758276a80a2951907fc67e7878a91ddd"
+                "reference": "1147a8b510caa905ac88ddca3d8278b8e25696fd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/gmars/tp5-rbac/zipball/8c08cd5a758276a80a2951907fc67e7878a91ddd",
-                "reference": "8c08cd5a758276a80a2951907fc67e7878a91ddd",
+                "url": "https://api.github.com/repos/gmars/tp5-rbac/zipball/1147a8b510caa905ac88ddca3d8278b8e25696fd",
+                "reference": "1147a8b510caa905ac88ddca3d8278b8e25696fd",
                 "shasum": ""
             },
             "require": {
@@ -75,20 +74,20 @@
                 }
             ],
             "description": "这个扩展是基于thinkPHP5框架的RBAC权限验证的扩展。使用本扩展能够快速的将RBAC权限控制器模块引入到自己的系统中。原则上本模块适合于任何PHP框架但是由于使用了thinkPHP5的特性所以使用composer安装到其他框架时需要做相应的修改。模块所需要的扩展库可以通过thinkPHP5的migration来做数据迁移。",
-            "time": "2018-06-27 08:55:39"
+            "time": "2018-08-16T07:49:36+00:00"
         },
         {
             "name": "topthink/framework",
-            "version": "v5.1.19",
+            "version": "v5.1.23",
             "source": {
                 "type": "git",
                 "url": "https://github.com/top-think/framework.git",
-                "reference": "3a0fea90ed2a99b181ce503090e08be1171ed091"
+                "reference": "d5bdc2c97dcc7bcb3b5072cfad0a27e3b7d6892e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/top-think/framework/zipball/3a0fea90ed2a99b181ce503090e08be1171ed091",
-                "reference": "3a0fea90ed2a99b181ce503090e08be1171ed091",
+                "url": "https://api.github.com/repos/top-think/framework/zipball/d5bdc2c97dcc7bcb3b5072cfad0a27e3b7d6892e",
+                "reference": "d5bdc2c97dcc7bcb3b5072cfad0a27e3b7d6892e",
                 "shasum": ""
             },
             "require": {
@@ -126,7 +125,7 @@
                 "orm",
                 "thinkphp"
             ],
-            "time": "2018-07-13 14:10:28"
+            "time": "2018-08-22T15:32:00+00:00"
         },
         {
             "name": "topthink/think-captcha",
@@ -165,7 +164,7 @@
                 }
             ],
             "description": "captcha package for thinkphp5",
-            "time": "2017-12-31 16:37:49"
+            "time": "2017-12-31T16:37:49+00:00"
         },
         {
             "name": "topthink/think-image",
@@ -205,7 +204,7 @@
                 }
             ],
             "description": "The ThinkPHP5 Image Package",
-            "time": "2016-09-29 06:05:43"
+            "time": "2016-09-29T06:05:43+00:00"
         },
         {
             "name": "topthink/think-installer",
@@ -246,7 +245,7 @@
                     "email": "448901948@qq.com"
                 }
             ],
-            "time": "2018-05-11 06:45:42"
+            "time": "2018-05-11T06:45:42+00:00"
         },
         {
             "name": "topthink/think-migration",
@@ -285,7 +284,7 @@
                     "email": "448901948@qq.com"
                 }
             ],
-            "time": "2017-12-31 16:32:22"
+            "time": "2017-12-31T16:32:22+00:00"
         }
     ],
     "packages-dev": [],
