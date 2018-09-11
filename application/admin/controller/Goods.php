@@ -10,7 +10,7 @@
 namespace app\admin\controller;
 
 use app\admin\common\Purview;
-use app\admin\model\Goods as myModel;
+use app\admin\model\Goods as MyModel;
 use app\admin\common\Tree;
 
 class Goods extends Purview
@@ -30,7 +30,7 @@ class Goods extends Purview
         $keywords = $this->request->get('keywords');
         $onSale = $this->request->param('onSale/d');
         $isIntegral = $this->request->param('isIntegral/d');
-        $model = new myModel();
+        $model = new MyModel();
         // $model = $model->withGoodsCat();
         $query = [];
         if ($keywords)
@@ -109,7 +109,7 @@ class Goods extends Purview
      */
     private function togetherDelete($id)
     {
-        $model = myModel::get($id);
+        $model = MyModel::get($id);
         if ($model && $model->delete())
         {
             $model = $model->goodsImages()->select();
@@ -156,7 +156,7 @@ class Goods extends Purview
 
         if ($id > 0)
         {
-            $model = new myModel();
+            $model = new MyModel();
             $records = $model->get($id);
             if ($records)
             {
@@ -190,7 +190,7 @@ class Goods extends Purview
             $imagesDelete = $this->request->post('goods_img_del');
             $newUploadButDel = $this->request->post('new_but_del');
 
-            $model = new myModel();
+            $model = new MyModel();
             $model->startTrans();
             $myModel = $model->lock(true)->find($id);
             if ($myModel)
@@ -264,7 +264,7 @@ class Goods extends Purview
      */
     public function add()
     {
-        $model = new myModel();
+        $model = new MyModel();
         $tree = new Tree();
         $list = $model->goodsCat()->getAllByKey();
         $this->assign('GoodsCatTree', json_encode($tree->getTree($list, 1)));
@@ -286,7 +286,7 @@ class Goods extends Purview
         $images = $this->request->post('goods_img');
         $newUploadButDel = $this->request->post('new_but_del');
         $imagesArray = [];
-        $model = new myModel();
+        $model = new MyModel();
 
         if ($model->save($data))
         {

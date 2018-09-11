@@ -9,7 +9,7 @@
 namespace app\admin\controller;
 
 use app\admin\common\Purview;
-use app\admin\model\Ads as myModel;
+use app\admin\model\Ads as MyModel;
 
 class Ads extends Purview
 {
@@ -21,7 +21,7 @@ class Ads extends Purview
      */
     public function index()
     {
-        $model = new myModel();
+        $model = new MyModel();
         $list = $model->paginate(20);
         $page = $list->render();
         $this->assign('list', $list);
@@ -40,7 +40,7 @@ class Ads extends Purview
 
         if ($id > 0)
         {
-            $model = myModel::get($id);
+            $model = MyModel::get($id);
             if ($model && $model->delete())
             {
                 return $this->success('操作成功', '/admin/Ads/index');
@@ -60,7 +60,7 @@ class Ads extends Purview
 
         if ($id > 0)
         {
-            $model = new myModel();
+            $model = new MyModel();
             $records = $model->get($id);
             if ($records)
             {
@@ -83,7 +83,7 @@ class Ads extends Purview
         {
             $data = $this->request->post('Ads');
 
-            $model = new myModel();
+            $model = new MyModel();
             $myModel = $model->get($id);
             if ($myModel)
             {
@@ -118,7 +118,7 @@ class Ads extends Purview
     public function doAdd()
     {
         $data = $this->request->post('Ads');
-        $model = new myModel();
+        $model = new MyModel();
         if ($model->save($data))
         {
             return $this->success('操作成功', '/admin/Ads/index');

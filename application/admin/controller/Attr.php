@@ -8,7 +8,7 @@
 namespace app\admin\controller;
 
 use app\admin\common\Purview;
-use app\admin\model\Attr as myModel;
+use app\admin\model\Attr as MyModel;
 
 class Attr extends Purview
 {
@@ -21,7 +21,7 @@ class Attr extends Purview
      */
     public function index()
     {
-        $model = new myModel();
+        $model = new MyModel();
         $list = $model->paginate(20);
         $page = $list->render();
         $this->assign('list', $list);
@@ -41,7 +41,7 @@ class Attr extends Purview
 
         if ($id > 0)
         {
-            $model = myModel::get($id);
+            $model = MyModel::get($id);
 
             if ($model && $model->delete())
             {
@@ -61,7 +61,7 @@ class Attr extends Purview
 
         if ($id > 0)
         {
-            $model = new myModel();
+            $model = new MyModel();
             $records = $model->get($id);
             if ($records)
             {
@@ -86,7 +86,7 @@ class Attr extends Purview
         {
             $data = $this->request->post('Attr');
 
-            $model = new myModel();
+            $model = new MyModel();
             $myModel = $model->get($id);
             if ($myModel)
             {
@@ -109,7 +109,7 @@ class Attr extends Purview
      */
     public function add()
     {
-        $model = new myModel();
+        $model = new MyModel();
         $this->assign('AttrGroup', $model->attrGroup()->all());
         $this->assign('value_typeItems', $this->valueTypeItems);
 
@@ -124,7 +124,7 @@ class Attr extends Purview
     {
         $data = $this->request->post('Attr');
 
-        $model = new myModel();
+        $model = new MyModel();
 
         if ($model->save($data))
         {

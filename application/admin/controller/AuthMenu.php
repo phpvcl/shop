@@ -10,7 +10,7 @@
 namespace app\admin\controller;
 
 use app\admin\common\Purview;
-use app\admin\model\AuthMenu as myModel;
+use app\admin\model\AuthMenu as MyModel;
 
 class AuthMenu extends Purview
 {
@@ -22,7 +22,7 @@ class AuthMenu extends Purview
      */
     public function index()
     {
-        $model = new myModel();
+        $model = new MyModel();
         $list = $model->order('order')->paginate(10);
         $page = $list->render();
         $this->assign('list', $list);
@@ -42,7 +42,7 @@ class AuthMenu extends Purview
 
         if ($id > 0)
         {
-            $model = myModel::get($id);
+            $model = MyModel::get($id);
             if ($model && $model->delete())
             {
                 //解除权限项的关联
@@ -64,7 +64,7 @@ class AuthMenu extends Purview
 
         if ($id > 0)
         {
-            $model = new myModel();
+            $model = new MyModel();
             $records = $model->get($id);
             if ($records)
             {
@@ -89,7 +89,7 @@ class AuthMenu extends Purview
         {
             $data = $this->request->post('AuthMenu');
 
-            $model = new myModel();
+            $model = new MyModel();
             $myModel = $model->get($id);
             if ($myModel)
             {
@@ -125,7 +125,7 @@ class AuthMenu extends Purview
     {
         $data = $this->request->post('AuthMenu');
 
-        $model = new myModel();
+        $model = new MyModel();
         if ($model->save($data))
         {
             return $this->success('操作成功', '/admin/AuthMenu/index');

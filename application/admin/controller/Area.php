@@ -8,7 +8,7 @@
 namespace app\admin\controller;
 
 use app\admin\common\Purview;
-use app\admin\model\Area as myModel;
+use app\admin\model\Area as MyModel;
 use app\admin\common\Tree;
 
 class Area extends Purview
@@ -30,7 +30,7 @@ class Area extends Purview
      */
     public function getTree()
     {
-        $model = new myModel();
+        $model = new MyModel();
         $data = $model->all()->toArray();
         $tree = ['code' => 0, 'msg' => 'ok', 'data' => $data];
         return json($tree);
@@ -46,7 +46,7 @@ class Area extends Purview
         
         if ($id > 0)
         {
-            $model = new myModel();
+            $model = new MyModel();
             $myModel = $model->get($id);
             if ($model)
             {
@@ -73,7 +73,7 @@ class Area extends Purview
 
         if ($id > 0)
         {
-            $model = new myModel();
+            $model = new MyModel();
             $records = $model->get($id);
             if ($records)
             {
@@ -95,7 +95,7 @@ class Area extends Purview
         {
             $data = $this->request->post('Area');
 
-            $model = new myModel();
+            $model = new MyModel();
             $myModel = $model->get($id);
             if ($myModel)
             {
@@ -131,7 +131,7 @@ class Area extends Purview
     {
         $data = $this->request->post('Area');
 
-        $model = new myModel();
+        $model = new MyModel();
         if ($model->save($data))
         {
             return $this->success('操作成功', '/admin/Area/index');

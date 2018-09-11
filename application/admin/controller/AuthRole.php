@@ -10,7 +10,7 @@
 namespace app\admin\controller;
 
 use app\admin\common\Purview;
-use app\admin\model\AuthRole as myModel;
+use app\admin\model\AuthRole as MyModel;
 use app\admin\common\Tree;
 
 class AuthRole extends Purview
@@ -25,7 +25,7 @@ class AuthRole extends Purview
      */
     public function index()
     {
-        $model = new myModel();
+        $model = new MyModel();
         $list = $model->paginate(10);
         $page = $list->render();
         $this->assign('list', $list);
@@ -42,7 +42,7 @@ class AuthRole extends Purview
     public function getTree()
     {
         $id = $this->request->param('id/d');
-        $model = new myModel();
+        $model = new MyModel();
         $data = $model->authItems()->getAllByKey();
         $result = ['code' => 1, 'msg' => 'error', 'data' => []];
         if ($data)
@@ -85,7 +85,7 @@ class AuthRole extends Purview
 
         if ($id > 0)
         {
-            $model = myModel::get($id);
+            $model = MyModel::get($id);
             if ($model && $model->delete())
             {
                 $model->authItems()->detach();
@@ -105,7 +105,7 @@ class AuthRole extends Purview
         $id = $this->request->param('id/d');
         if ($id > 0)
         {
-            $model = new myModel();
+            $model = new MyModel();
             $records = $model->get($id);
             if ($records)
             {
@@ -137,7 +137,7 @@ class AuthRole extends Purview
                 return $this->error('操作失败，还没有选择权限');
             }
 
-            $model = new myModel();
+            $model = new MyModel();
             $myModel = $model->get($id, 'AuthItems');
 
             if ($myModel)
@@ -218,7 +218,7 @@ class AuthRole extends Purview
         {
             $items = array_values($items);
         }
-        $model = new myModel();
+        $model = new MyModel();
 
         if ($model->save($data) && $model->authItems()->attach($items))
         {

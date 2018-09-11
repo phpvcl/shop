@@ -10,7 +10,7 @@
 namespace app\admin\controller;
 
 use app\admin\common\Purview;
-use app\admin\model\Article as myModel;
+use app\admin\model\Article as MyModel;
 
 class Article extends Purview
 {
@@ -24,7 +24,7 @@ class Article extends Purview
     {
 
         $title = $this->request->get('title');
-        $model = new myModel();
+        $model = new MyModel();
         //下面这句是使用IN(1,2,...)的方式一次sql查询出分类名，不加的话是每条记录都发起一条sql查询分类名，当然in用不了索引的
         // $model = $model->withArticleCat();
         $query = [];
@@ -95,7 +95,7 @@ class Article extends Purview
      */
     private function togetherDelete($id)
     {
-        $model = myModel::get($id);
+        $model = MyModel::get($id);
         if ($model && $model->delete())
         {
             if ($model->pic)
@@ -122,7 +122,7 @@ class Article extends Purview
 
         if ($id > 0)
         {
-            $model = new myModel();
+            $model = new MyModel();
             $records = $model->get($id);
             if ($records)
             {
@@ -146,7 +146,7 @@ class Article extends Purview
         {
             $data = $this->request->post('article');
 
-            $article = new myModel();
+            $article = new MyModel();
             $myArticle = $article->get($id);
             if ($myArticle)
             {
@@ -179,7 +179,7 @@ class Article extends Purview
      */
     public function add()
     {
-        $model = new myModel();
+        $model = new MyModel();
         $this->assign('ArticleCat', $model->articleCat()->all());
         return $this->fetch();
     }
@@ -193,7 +193,7 @@ class Article extends Purview
     {
         $data = $this->request->post('article');
 
-        $myArticle = new myModel();
+        $myArticle = new MyModel();
         if ($myArticle->save($data))
         {
             return $this->success('操作成功', 'admin/Article/index');

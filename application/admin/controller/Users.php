@@ -10,7 +10,7 @@
 namespace app\admin\controller;
 
 use app\admin\common\Purview;
-use app\admin\model\Users as myModel;
+use app\admin\model\Users as MyModel;
 
 class Users extends Purview
 {
@@ -31,7 +31,7 @@ class Users extends Purview
         $checked = $this->request->param('checked/d');
 
         $query = [];
-        $model = new myModel();
+        $model = new MyModel();
         if ($keywords)
         {
             $model = $model->where('username', 'like', $keywords . '%');
@@ -66,7 +66,7 @@ class Users extends Purview
 
         if (isset($idArray[0]))
         {
-            $model = new myModel();
+            $model = new MyModel();
             $rs = $model->where('id', 'in', $idArray)->delete();
             if ($rs)
             {
@@ -87,7 +87,7 @@ class Users extends Purview
 
         if ($id > 0)
         {
-            $model = myModel::get($id);
+            $model = MyModel::get($id);
             if ($model && $model->delete())
             {
                 return $this->success('操作成功', '/admin/Users/index');
@@ -107,7 +107,7 @@ class Users extends Purview
 
         if ($id > 0)
         {
-            $model = new myModel();
+            $model = new MyModel();
             $records = $model->get($id);
             if ($records)
             {
@@ -133,7 +133,7 @@ class Users extends Purview
         if ($id > 0)
         {
             $data = $this->request->post('Users');
-            $model = new myModel();
+            $model = new MyModel();
             $model->startTrans();
             //加锁
             $myModel = $model->lock(true)->find($id);
@@ -164,7 +164,7 @@ class Users extends Purview
         if ($id > 0)
         {
             $data = $this->request->post('Users');
-            $model = new myModel();
+            $model = new MyModel();
             $myModel = $model->get($id);
             if ($myModel)
             {
@@ -203,7 +203,7 @@ class Users extends Purview
     {
         $data = $this->request->post('Users');
 
-        $model = new myModel();
+        $model = new MyModel();
         if ($model->save($data))
         {
             return $this->success('操作成功', '/admin/Users/index');

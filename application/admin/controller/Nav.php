@@ -10,7 +10,7 @@
 namespace app\admin\controller;
 
 use app\admin\common\Purview;
-use app\admin\model\Nav as myModel;
+use app\admin\model\Nav as MyModel;
 
 class Nav extends Purview
 {
@@ -24,7 +24,7 @@ class Nav extends Purview
      */
     public function index()
     {
-        $model = new myModel();
+        $model = new MyModel();
         $list = $model->paginate(10);
         $page = $list->render();
         $this->assign('list', $list);
@@ -45,7 +45,7 @@ class Nav extends Purview
 
         if ($id > 0)
         {
-            $model = myModel::get($id);
+            $model = MyModel::get($id);
             if ($model && $model->delete())
             {
                 return $this->success('操作成功', '/admin/Nav/index');
@@ -65,7 +65,7 @@ class Nav extends Purview
 
         if ($id > 0)
         {
-            $model = new myModel();
+            $model = new MyModel();
             $records = $model->get($id);
             if ($records)
             {
@@ -91,7 +91,7 @@ class Nav extends Purview
         {
             $data = $this->request->post('Nav');
 
-            $model = new myModel();
+            $model = new MyModel();
             $myModel = $model->get($id);
             if ($myModel)
             {
@@ -129,7 +129,7 @@ class Nav extends Purview
     {
         $data = $this->request->post('Nav');
 
-        $model = new myModel();
+        $model = new MyModel();
         if ($model->save($data))
         {
             return $this->success('操作成功', '/admin/Nav/index');

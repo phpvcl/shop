@@ -10,7 +10,7 @@
 namespace app\admin\controller;
 
 use app\admin\common\Purview;
-use app\admin\model\Message as myModel;
+use app\admin\model\Message as MyModel;
 
 class Message extends Purview
 {
@@ -25,7 +25,7 @@ class Message extends Purview
     public function index()
     {
 
-        $model = new myModel();
+        $model = new MyModel();
         $list = $model->paginate(10);
         $page = $list->render();
         $this->assign('list', $list);
@@ -46,7 +46,7 @@ class Message extends Purview
 
         if ($id > 0)
         {
-            $model = myModel::get($id);
+            $model = MyModel::get($id);
             if ($model && $model->delete())
             {
                 return $this->success('操作成功', '/admin/Message/index');
@@ -66,7 +66,7 @@ class Message extends Purview
 
         if ($id > 0)
         {
-            $model = new myModel();
+            $model = new MyModel();
             $records = $model->get($id);
             if ($records)
             {
@@ -92,7 +92,7 @@ class Message extends Purview
         {
             $data = $this->request->post('Message');
 
-            $model = new myModel();
+            $model = new MyModel();
             $myModel = $model->get($id);
             if ($myModel)
             {
@@ -129,7 +129,7 @@ class Message extends Purview
     {
         $data = $this->request->post('Message');
 
-        $model = new myModel();
+        $model = new MyModel();
         if ($model->save($data))
         {
             return $this->success('操作成功', '/admin/Message/index');

@@ -10,7 +10,7 @@
 namespace app\admin\controller;
 
 use app\admin\common\Purview;
-use app\admin\model\AuthItems as myModel;
+use app\admin\model\AuthItems as MyModel;
 
 class AuthItems extends Purview
 {
@@ -34,7 +34,7 @@ class AuthItems extends Purview
     public function getTree()
     {
 
-        $model = new myModel();
+        $model = new MyModel();
         $data = $model->all()->toArray();
         $tree = ['code' => 0, 'msg' => 'ok', 'data' => $data];
         return json($tree);
@@ -51,7 +51,7 @@ class AuthItems extends Purview
 
         if ($id > 0)
         {
-            $model = myModel::get($id);
+            $model = MyModel::get($id);
 
             if ($model && $model->delete())
             {
@@ -72,7 +72,7 @@ class AuthItems extends Purview
 
         if ($id > 0)
         {
-            $model = new myModel();
+            $model = new MyModel();
             $records = $model->get($id);
             if ($records)
             {
@@ -98,7 +98,7 @@ class AuthItems extends Purview
         {
             $data = $this->request->post('AuthItems');
 
-            $model = new myModel();
+            $model = new MyModel();
             $myModel = $model->get($id);
             if ($myModel)
             {
@@ -124,7 +124,7 @@ class AuthItems extends Purview
     public function add()
     {
         $pid = $this->request->param('pid');
-        $model = new myModel();
+        $model = new MyModel();
 
         $this->assign('pid', $pid);
         $this->assign('AuthMenu', $model->authMenu()->all());
@@ -142,7 +142,7 @@ class AuthItems extends Purview
     {
         $data = $this->request->post('AuthItems');
 
-        $model = new myModel();
+        $model = new MyModel();
         if ($model->save($data))
         {
             return $this->success('操作成功, 非超管要重新登陆才生效', '/admin/AuthItems/index');
@@ -172,7 +172,7 @@ class AuthItems extends Purview
       }
 
       $item = ['pid' => 0, 'name' => $key, 'path'=> trim($path), 'relation_path'=> trim($relationPath),'status' => 1];
-      $model = new myModel;
+      $model = new MyModel;
       $id = $model->save($item);
       $model->isUpdate(false);
       $items = [];

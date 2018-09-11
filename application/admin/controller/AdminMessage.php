@@ -9,7 +9,7 @@
 namespace app\admin\controller;
 
 use app\admin\common\Purview;
-use app\admin\model\AdminMessage as myModel;
+use app\admin\model\AdminMessage as MyModel;
 
 class AdminMessage extends Purview
 {
@@ -23,7 +23,7 @@ class AdminMessage extends Purview
      */
     public function index()
     {
-        $model = new myModel();
+        $model = new MyModel();
         $sender = ['sender_id', '=', session('admin_id')];
         $receiver = ['receiver_id', '=', session('admin_id')];
         $list = $model->whereOr([$sender, $receiver])->order('id', 'desc')->paginate(10);
@@ -46,7 +46,7 @@ class AdminMessage extends Purview
 
         if ($id > 0)
         {
-            $model = myModel::get($id);
+            $model = MyModel::get($id);
             if ($model && $model->delete())
             {
                 return $this->success('操作成功', '/admin/AdminMessage/index');
@@ -66,7 +66,7 @@ class AdminMessage extends Purview
 
         if ($id > 0)
         {
-            $model = new myModel();
+            $model = new MyModel();
             $records = $model->get($id);
             if ($records)
             {
@@ -88,7 +88,7 @@ class AdminMessage extends Purview
      */
     public function add()
     {
-        $model = new myModel();
+        $model = new MyModel();
         $this->assign('AuthAdmin', $model->authAdmin()->where('id', '<>', session('admin_id'))->select());
 
         return $this->fetch();
@@ -103,7 +103,7 @@ class AdminMessage extends Purview
     {
         $data = $this->request->post('AdminMessage');
 
-        $model = new myModel();
+        $model = new MyModel();
         if ($model->save($data))
         {
             return $this->success('操作成功', '/admin/AdminMessage/index');

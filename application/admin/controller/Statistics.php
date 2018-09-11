@@ -10,7 +10,7 @@
 namespace app\admin\controller;
 
 use app\admin\common\Purview;
-use app\admin\model\Statistics as myModel;
+use app\admin\model\Statistics as MyModel;
 
 class Statistics extends Purview
 {
@@ -52,7 +52,7 @@ class Statistics extends Purview
         $year = date('Y', $startTime);
         $month = date('m', $startTime);
         $day = date('d', $startTime);
-        $model = new myModel();
+        $model = new MyModel();
         $statistics = $model->where([['year', '>=', $year], ['month', '>=', $month], ['day', '>=', $day]])
                 ->limit($limit)
                 ->select();
@@ -103,7 +103,7 @@ class Statistics extends Purview
         $year = date('Y', $startTime);
         $month = date('m', $startTime);
         $day = date('d', $startTime);
-        $model = new myModel();
+        $model = new MyModel();
         $statistics = $model->where([['year', '>=', $year], ['month', '>=', $month], ['day', '>=', $day]])
                 ->limit($limit)
                 ->select();
@@ -154,7 +154,7 @@ class Statistics extends Purview
         $year = date('Y', $startTime);
         $month = date('m', $startTime);
         $day = date('d', $startTime);
-        $model = new myModel();
+        $model = new MyModel();
         $statistics = $model->where([['year', '>=', $year], ['month', '>=', $month], ['day', '>=', $day]])
                 ->limit($limit)
                 ->select();
@@ -205,7 +205,7 @@ class Statistics extends Purview
         $year = date('Y', $startTime);
         $month = date('m', $startTime);
         $day = date('d', $startTime);
-        $model = new myModel();
+        $model = new MyModel();
         $statistics = $model->where([['year', '>=', $year], ['month', '>=', $month], ['day', '>=', $day]])
                 ->limit($limit)
                 ->select();
@@ -244,7 +244,7 @@ class Statistics extends Purview
       'visitor' => rand(100, 100000),
       ];
       }
-      $model = new myModel();
+      $model = new MyModel();
       $model->saveAll($array);
       }
      */

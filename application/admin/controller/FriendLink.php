@@ -10,7 +10,7 @@
 namespace app\admin\controller;
 
 use app\admin\common\Purview;
-use app\admin\model\FriendLink as myModel;
+use app\admin\model\FriendLink as MyModel;
 
 class FriendLink extends Purview
 {
@@ -22,7 +22,7 @@ class FriendLink extends Purview
      */
     public function index()
     {
-        $model = new myModel();
+        $model = new MyModel();
         $list = $model->paginate(20);
         $page = $list->render();
         $this->assign('list', $list);
@@ -41,7 +41,7 @@ class FriendLink extends Purview
 
         if ($id > 0)
         {
-            $model = myModel::get($id);
+            $model = MyModel::get($id);
             if ($model && $model->delete())
             {
                 return $this->success('操作成功', '/admin/FriendLink/index');
@@ -61,7 +61,7 @@ class FriendLink extends Purview
 
         if ($id > 0)
         {
-            $model = new myModel();
+            $model = new MyModel();
             $records = $model->get($id);
             if ($records)
             {
@@ -84,7 +84,7 @@ class FriendLink extends Purview
         {
             $data = $this->request->post('FriendLink');
 
-            $model = new myModel();
+            $model = new MyModel();
             $myModel = $model->get($id);
             if ($myModel)
             {
@@ -120,7 +120,7 @@ class FriendLink extends Purview
     {
         $data = $this->request->post('FriendLink');
 
-        $model = new myModel();
+        $model = new MyModel();
         if ($model->save($data))
         {
             return $this->success('操作成功', '/admin/FriendLink/index');

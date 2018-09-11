@@ -10,7 +10,7 @@
 namespace app\admin\controller;
 
 use app\admin\common\Purview;
-use app\admin\model\Config as myModel;
+use app\admin\model\Config as MyModel;
 
 class Config extends Purview
 {
@@ -22,7 +22,7 @@ class Config extends Purview
     public function index()
     {
 
-        $myconfig = new myModel();
+        $myconfig = new MyModel();
         $config = $myconfig->get(1)->toArray();
         $this->assign('config', $config);
         return $this->fetch();
@@ -36,7 +36,7 @@ class Config extends Purview
     {
         $data = $this->request->post('config');
 
-        $myconfig = new myModel();
+        $myconfig = new MyModel();
         $obj = $myconfig->find();
         if ($obj->save($data))
         {
@@ -56,7 +56,7 @@ class Config extends Purview
     {
         $data = $this->request->post('config');
 
-        $myconfig = new myModel();
+        $myconfig = new MyModel();
         $obj = $myconfig->find();
 
         if ( $obj->save($data))
@@ -78,7 +78,7 @@ class Config extends Purview
 
         $data = $this->request->post('config');
 
-        $myconfig = new myModel();
+        $myconfig = new MyModel();
         $obj = $myconfig->find();
 
         if ($obj->save($data))

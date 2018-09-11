@@ -8,7 +8,7 @@
 namespace app\admin\controller;
 
 use app\admin\common\Purview;
-use app\admin\model\ArticleCat as myModel;
+use app\admin\model\ArticleCat as MyModel;
 
 
 class ArticleCat extends Purview
@@ -20,7 +20,7 @@ class ArticleCat extends Purview
      */
     public function index()
     {
-        $list = myModel::paginate(20);
+        $list = MyModel::paginate(20);
         $page = $list->render();
         $this->assign('list', $list);
         $this->assign('page', $page);
@@ -38,7 +38,7 @@ class ArticleCat extends Purview
 
         if ($id > 0)
         {
-            $model = myModel::get($id, 'Article');
+            $model = MyModel::get($id, 'Article');
 
             //together注意是大小写,因为get里面取到的数组索引被转成小写了
             if ($model && $model->together('article')->delete())
@@ -59,7 +59,7 @@ class ArticleCat extends Purview
 
         if ($id > 0)
         {
-            $model = new myModel();
+            $model = new MyModel();
             $records = $model->get($id);
             if ($records)
             {
@@ -81,7 +81,7 @@ class ArticleCat extends Purview
         {
             $data = $this->request->post('ArticleCat');
 
-            $model = new myModel();
+            $model = new MyModel();
             $myModel = $model->get($id);
             if ($myModel)
             {
@@ -116,7 +116,7 @@ class ArticleCat extends Purview
     {
         $data = $this->request->post('ArticleCat');
 
-        $model = new myModel();
+        $model = new MyModel();
         if ($model->save($data))
         {
             return $this->success('操作成功', '/admin/ArticleCat/index');

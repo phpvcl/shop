@@ -9,7 +9,7 @@
 namespace app\admin\controller;
 
 use app\admin\common\Purview;
-use app\admin\model\AuthAdmin as myModel;
+use app\admin\model\AuthAdmin as MyModel;
 
 class AuthAdmin extends Purview
 {
@@ -21,7 +21,7 @@ class AuthAdmin extends Purview
      */
     public function index()
     {
-        $model = new myModel();
+        $model = new MyModel();
         $list = $model->paginate(10);
         $page = $list->render();
         $this->assign('list', $list);
@@ -42,7 +42,7 @@ class AuthAdmin extends Purview
         if ($id > 0)
         {
             
-            $model = myModel::where('is_super_admin', '<', 1)->find($id);
+            $model = MyModel::where('is_super_admin', '<', 1)->find($id);
 
             if ($model && $model->delete())
             {
@@ -61,7 +61,7 @@ class AuthAdmin extends Purview
     public function notebook()
     {
         $id = session('admin_id');
-        $model = new myModel();
+        $model = new MyModel();
         $records = $model->get($id);
         if ($records)
         {
@@ -82,7 +82,7 @@ class AuthAdmin extends Purview
     {
         $id = session('admin_id');
         $data = $this->request->post('AuthAdmin');
-        $model = new myModel();
+        $model = new MyModel();
         $records = $model->get($id);
         if ($records && $records->save($data))
         {
@@ -102,7 +102,7 @@ class AuthAdmin extends Purview
     public function adminInfo()
     {
         $id = session('admin_id');
-        $model = new myModel();
+        $model = new MyModel();
         $records = $model->get($id);
         if ($records)
         {
@@ -124,7 +124,7 @@ class AuthAdmin extends Purview
     {
         $id = session('admin_id');
         $data = $this->request->post('AuthAdmin');
-        $model = new myModel();
+        $model = new MyModel();
         $records = $model->get($id);
         if ($records && isset($data['oldpassword']) && $records->password == md5($data['oldpassword']))
         {
@@ -154,7 +154,7 @@ class AuthAdmin extends Purview
 
         if ($id > 0)
         {
-            $model = new myModel();
+            $model = new MyModel();
             $records = $model->where('is_super_admin', '<', 1)->find($id, 'AuthRole');
             if ($records)
             {
@@ -202,7 +202,7 @@ class AuthAdmin extends Purview
                 $roles = array_values($roles);
             }
 
-            $model = new myModel();
+            $model = new MyModel();
             $myModel = $model->where('is_super_admin', '<', 1)->find($id, 'AuthRole');
             if ($myModel)
             {
@@ -261,7 +261,7 @@ class AuthAdmin extends Purview
         {
             $data = $this->request->post('AuthAdmin');
 
-            $model = new myModel();
+            $model = new MyModel();
 
             $myModel = $model->where('is_super_admin', '<', 1)->find($id);
             if ($myModel)
@@ -286,7 +286,7 @@ class AuthAdmin extends Purview
      */
     public function add()
     {
-        $model = new myModel();
+        $model = new MyModel();
         $this->assign('AuthRole', $model->authRole()->all());
 
         return $this->fetch();
@@ -309,7 +309,7 @@ class AuthAdmin extends Purview
         {
             $roles = array_values($roles);
         }
-        $model = new myModel();
+        $model = new MyModel();
 
         if ($model->save($data) && $model->authRole()->attach($roles))
         {

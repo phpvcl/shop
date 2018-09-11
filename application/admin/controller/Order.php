@@ -10,7 +10,7 @@
 namespace app\admin\controller;
 
 use app\admin\common\Purview;
-use app\admin\model\Order as myModel;
+use app\admin\model\Order as MyModel;
 
 class Order extends Purview
 {
@@ -30,7 +30,7 @@ class Order extends Purview
 
         $keywords = $this->request->get('keywords');
         $status = $this->request->param('status');
-        $model = new myModel();
+        $model = new MyModel();
 
         $query = [];
         if ($keywords)
@@ -67,7 +67,7 @@ class Order extends Purview
 
         if ($id > 0)
         {
-            $model = myModel::get($id);
+            $model = MyModel::get($id);
             if ($model && $model->delete())
             {
                 return $this->success('操作成功', '/admin/Order/index');
@@ -87,7 +87,7 @@ class Order extends Purview
 
         if ($id > 0)
         {
-            $model = new myModel();
+            $model = new MyModel();
             $records = $model->get($id);
             if ($records)
             {
@@ -113,7 +113,7 @@ class Order extends Purview
         if ($id > 0)
         {
             $data = $this->request->post('Order');
-            $model = new myModel();
+            $model = new MyModel();
             $myModel = $model->get($id);
             if ($myModel)
             {

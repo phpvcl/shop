@@ -10,7 +10,7 @@
 namespace app\admin\controller;
 
 use app\admin\common\Purview;
-use app\admin\model\GoodsCat as myModel;
+use app\admin\model\GoodsCat as MyModel;
 
 class GoodsCat extends Purview
 {
@@ -32,7 +32,7 @@ class GoodsCat extends Purview
     public function getTree()
     {
 
-        $model = new myModel();
+        $model = new MyModel();
         $data = $model->all()->toArray();
         $tree = ['code' => 0, 'msg' => 'ok', 'data' => $data];
         return json($tree);
@@ -49,7 +49,7 @@ class GoodsCat extends Purview
 
         if ($id > 0)
         {
-            $model = myModel::get($id, 'Goods');
+            $model = MyModel::get($id, 'Goods');
 
             if ($model && $model->together('goods')->delete())
             {
@@ -70,7 +70,7 @@ class GoodsCat extends Purview
 
         if ($id > 0)
         {
-            $model = new myModel();
+            $model = new MyModel();
             $records = $model->get($id);
             if ($records)
             {
@@ -95,7 +95,7 @@ class GoodsCat extends Purview
         {
             $data = $this->request->post('GoodsCat');
 
-            $model = new myModel();
+            $model = new MyModel();
             $myModel = $model->get($id);
             if ($myModel)
             {
@@ -133,7 +133,7 @@ class GoodsCat extends Purview
     {
         $data = $this->request->post('GoodsCat');
 
-        $model = new myModel();
+        $model = new MyModel();
         if ($model->save($data))
         {
             return $this->success('操作成功', '/admin/GoodsCat/index');

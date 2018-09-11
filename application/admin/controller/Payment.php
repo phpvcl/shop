@@ -10,7 +10,7 @@
 namespace app\admin\controller;
 
 use app\admin\common\Purview;
-use app\admin\model\Payment as myModel;
+use app\admin\model\Payment as MyModel;
 
 class Payment extends Purview
 {
@@ -24,7 +24,7 @@ class Payment extends Purview
      */
     public function index()
     {
-        $model = new myModel();
+        $model = new MyModel();
         $list = $model->paginate(10);
         $page = $list->render();
         $this->assign('list', $list);
@@ -45,7 +45,7 @@ class Payment extends Purview
 
         if ($id > 0)
         {
-            $model = myModel::get($id);
+            $model = MyModel::get($id);
             if ($model && $model->delete())
             {
                 return $this->success('操作成功', '/admin/Payment/index');
@@ -65,7 +65,7 @@ class Payment extends Purview
 
         if ($id > 0)
         {
-            $model = new myModel();
+            $model = new MyModel();
             $records = $model->get($id);
             if ($records)
             {
@@ -90,7 +90,7 @@ class Payment extends Purview
         if ($id > 0)
         {
             $data = $this->request->post('Payment');
-            $model = new myModel();
+            $model = new MyModel();
             $myModel = $model->get($id);
             if ($myModel)
             {
@@ -128,7 +128,7 @@ class Payment extends Purview
     {
         $data = $this->request->post('Payment');
 
-        $model = new myModel();
+        $model = new MyModel();
         if ($model->save($data))
         {
             return $this->success('操作成功', '/admin/Payment/index');
